@@ -1,4 +1,4 @@
-#### Yannis Version
+# Yannis Version
 # DonInf2 Starting Code
 This some boiler plate code for the DonInf2 course project. Use this code as starting point for your project.
 
