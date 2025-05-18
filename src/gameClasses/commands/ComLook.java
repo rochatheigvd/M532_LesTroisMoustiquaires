@@ -1,5 +1,9 @@
 package gameClasses.commands;
 
-public class ComLook {
-    
+import gameClasses.Command;
+
+public class ComLook extends Command {
+    public void execute(String argument) {
+
+    }
 }

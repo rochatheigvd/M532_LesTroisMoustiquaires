@@ -1,5 +1,5 @@
 package gameClasses.interfaces;
 
-public class ICommand {
-    
+public interface ICommand {
+    void execute(String argument);
 }

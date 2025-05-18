@@ -1,5 +1,7 @@
 package gameClasses;
 
-public class CommandRegistry {
+import java.util.ArrayList;
 
+public class CommandRegistry {
+    private ArrayList<Command> commandList;
 }

@@ -1,5 +1,9 @@
 package gameClasses.commands;
 
-public class ComHelp {
-    
+import gameClasses.Command;
+
+public class ComHelp extends Command {
+    public void execute(String argument){
+        
+    }
 }

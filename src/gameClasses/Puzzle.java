@@ -1,6 +1,9 @@
 
 package gameClasses;
 
-public class Puzzle {
+import java.util.ArrayList;
 
+public class Puzzle {
+    private String solution;
+    private ArrayList<Item> rewards;
 }

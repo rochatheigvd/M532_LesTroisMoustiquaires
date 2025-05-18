@@ -1,5 +1,9 @@
 package gameClasses.commands;
 
-public class comInspect {
-    
+import gameClasses.Command;
+
+public class comInspect extends Command{
+    public void execute(String argument){
+        
+    }
 }

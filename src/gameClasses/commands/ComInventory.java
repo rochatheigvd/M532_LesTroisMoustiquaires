@@ -1,5 +1,9 @@
 package gameClasses.commands;
 
-public class ComInventory {
-    
+import gameClasses.Command;
+
+public class ComInventory extends Command {
+    public void execute(String argument) {
+
+    }
 }

@@ -1,5 +1,9 @@
 package gameClasses.commands;
 
-public class ComUse {
-    
+import gameClasses.Command;
+
+public class ComUse extends Command {
+    public void execute(String argument) {
+
+    }
 }

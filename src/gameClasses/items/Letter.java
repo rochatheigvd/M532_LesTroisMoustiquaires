@@ -1,5 +1,11 @@
 package gameClasses.items;
 
-public class Letter {
-    
+import gameClasses.Item;
+
+public class Letter extends Item {
+
+    public String inspect() {
+        return "TEST";
+    }
+
 }

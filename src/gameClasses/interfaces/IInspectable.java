@@ -1,5 +1,5 @@
 package gameClasses.interfaces;
 
-public class IInspectable {
-    
+public interface IInspectable {
+   String inspect();
 }
