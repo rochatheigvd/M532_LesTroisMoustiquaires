@@ -1,4 +1,4 @@
-package gameClasses;
+package gameClasses.interfaces;
 
 public class IInspectable {
     
