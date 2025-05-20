@@ -9,7 +9,7 @@ public class Game {
     WorldMap worldMap;
     CommandRegistry commandRegistry;
 
-    public Game(player, worldMap, commandRegistry) {
+    public Game(Player player, WorldMap worldMap, CommandRegistry commandRegistry) {
         this.player = player;
         this.worldMap = worldMap;
         this.commandRegistry = commandRegistry;
@@ -23,22 +23,22 @@ public class Game {
         // end of game
     }
 
-    getPlayer() {
+    public Player getPlayer() {
         return player;
     }
-    getWorldMap() {
+    public WorldMap getWorldMap() {
         return worldMap;
     }
-    getCommandRegistry() {
+    public CommandRegistry getCommandRegistry() {
         return commandRegistry;
     }
-    setPlayer(player) {
+    public void setPlayer(Player player) {
         this.player = player;
     }
-    setWorldMap(worldMap) {
+    public void setWorldMap(WorldMap worldMap) {
         this.worldMap = worldMap;
     }
-    setCommandRegistry(commandRegistry) {
+    public void setCommandRegistry(CommandRegistry commandRegistry) {
         this.commandRegistry = commandRegistry;
     }
 
