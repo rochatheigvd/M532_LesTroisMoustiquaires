@@ -40,8 +40,7 @@ public class Initialisation {
     }
 
     private void createWorldMap() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createWorldMap'");
+        WorldMap worldMap = new WorldMap(3, 3);
     }
 
     private void createInventory() {

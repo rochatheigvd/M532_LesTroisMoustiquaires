@@ -3,12 +3,12 @@ package gameClasses;
 public class WorldMap {
     private Location[][] worldMap;
 
-    public WorldMap() {
-        this.worldMap = new Location[3][3];
+    public WorldMap(int xSize, int ySize) {
+        this.worldMap = new Location[xSize][ySize];
     }
 
     public Location getLocation(int[] position) {
-        if (position[0] < 3 && position[0] >= 0 && position[1] < 3 && position[1] >= 0) {
+        if (position[0] < this.worldMap.length && position[0] >= 0 && position[1] < this.worldMap[0].length && position[1] >= 0) {
             return this.worldMap[position[0]][position[1]];
         } else {
             return null;
