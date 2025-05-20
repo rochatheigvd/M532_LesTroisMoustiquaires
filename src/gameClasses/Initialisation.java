@@ -44,8 +44,7 @@ public class Initialisation {
     }
 
     private void createInventory() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createInventory'");
+        Inventory inventory = new Inventory();
     }
 
     private void createPlayer() {
