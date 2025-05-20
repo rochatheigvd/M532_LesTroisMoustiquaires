@@ -20,7 +20,7 @@ public class WorldMap {
     }
 
     public boolean setWorldMap(Location location, int[] locPos) {
-        if (locPos[0] < 3 && locPos[0] >= 0 && locPos[1] < 3 && locPos[1] >= 0 && location != null) {
+        if (locPos[0] < this.worldMap.length && locPos[0] >= 0 && locPos[1] < this.worldMap[0].length && locPos[1] >= 0 && location != null) {
             if (this.worldMap[locPos[0]][locPos[1]] != null) {
                 this.worldMap[locPos[0]][locPos[1]] = location;
                 return true;
