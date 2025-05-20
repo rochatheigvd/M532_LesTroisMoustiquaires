@@ -31,12 +31,12 @@ public class Initialisation {
 
     private void createLocations() {
         Location loc1 = new Location("Kitchen", "Ceci est le salon", true);
-        Location loc2 = new Location("Dining Room", "Ceci est le salon", true);
-        Location loc3 = new Location("Living Room", "Ceci est le salon", true);
+        Location loc2 = new Location("Dining Room", "Ceci est le salon", false);
+        Location loc3 = new Location("Living Room", "Ceci est le salon", false);
         Location loc4 = new Location("Cagibi", "Ceci est le salon", true);
         Location loc5 = new Location("Toilet", "Ceci est le salon", true);
-        Location loc6 = new Location("Hall Left", "Ceci est le salon", true);
-        Location loc7 = new Location("Hall Right", "Ceci est le salon", true);
+        Location loc6 = new Location("Hall Left", "Ceci est le salon", false);
+        Location loc7 = new Location("Hall Right", "Ceci est le salon", false);
     }
 
     private void createWorldMap() {
