@@ -26,9 +26,9 @@ public abstract class Command implements ICommand {
     }
 
     public Location getPlayerLocation() {
-        return Location;
+        int[] position = game.getPlayer().getPlayerPosition();
+        Location playerLocation = game.getWorldMap().getLocation(position);
+        return playerLocation;
     }
-
-    public abstract void execute(String[] args);
 
 }
