@@ -19,3 +19,4 @@ public void addCommand(Command command) {
 
 public void userInput(String){
 }
+}
