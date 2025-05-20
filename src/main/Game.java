@@ -9,7 +9,10 @@ public class Game {
     WorldMap worldMap;
     CommandRegistry commandRegistry;
 
-    public Game() {
+    public Game(player, worldMap, commandRegistry) {
+        this.player = player;
+        this.worldMap = worldMap;
+        this.commandRegistry = commandRegistry;
         System.out.println("Initializing game...");
     }
 
@@ -18,6 +21,25 @@ public class Game {
         // your runtime code here...
 
         // end of game
+    }
+
+    getPlayer() {
+        return player;
+    }
+    getWorldMap() {
+        return worldMap;
+    }
+    getCommandRegistry() {
+        return commandRegistry;
+    }
+    setPlayer(player) {
+        this.player = player;
+    }
+    setWorldMap(worldMap) {
+        this.worldMap = worldMap;
+    }
+    setCommandRegistry(commandRegistry) {
+        this.commandRegistry = commandRegistry;
     }
 
 }
