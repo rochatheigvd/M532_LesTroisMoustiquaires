@@ -7,10 +7,6 @@ public abstract class Command implements ICommand {
     private String description;
     private String verb;
     private static Game game;
-<<<<<<< HEAD
-=======
-
->>>>>>> Léa
 
     public Command(String verb, String description) {
         this.verb = verb;
@@ -25,13 +21,10 @@ public abstract class Command implements ICommand {
         return verb;
     }
 
-<<<<<<< HEAD
     public static Game getGame() {
         return game;
     }
 
-=======
->>>>>>> Léa
     public Location getPlayerLocation() {
         return Location;
     }
