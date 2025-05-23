@@ -9,6 +9,78 @@ public class ComMove extends Command {
 
     @Override
     public void execute(String argument) {
-
+        if (moveExist(argument)) {
+             
+            int[] nextPos = nextPosition(transcriptDirection(argument));
+            if (verifNextLocationExists(nextPos)) {
+                getGame().getPlayer().setPlayerPosition(nextPos);
+                displayMove(argument, nextPos);
+            } else {
+                System.out.println("impossible de bouger là-bas");
+            }
+        } else {
+            System.out.println("Argument inconnu");
+        }
     }
+
+    private void displayMove(String argument, int[] nextPos) {
+        System.out.println("Vous vous êtes déplacé en" + argument);
+        System.out.println("Vous vous trouvez dans " + getGame().getWorldMap().getLocation(nextPos).getName());
+        System.out.println(getGame().getWorldMap().getLocation(nextPos).getDescr());
+    }
+
+    private boolean moveExist(String argument) {
+        if (argument.equals("north") || argument.equals("south") || argument.equals("east")
+                || argument.equals("west")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int[] transcriptDirection(String argument) {
+        int[] move = new int[2];
+        switch (argument) {
+            case "north":
+                move[1] = -1;
+                break;
+            case "south":
+                move[1] = 1;
+                break;
+            case "west":
+                move[0] = -1;
+                break;
+            case "east":
+                move[0] = 1;
+                break;
+            default:
+                break;
+        }
+        return move;
+    }
+
+    private int[] nextPosition(int[] move) {
+        int[] nextPos = new int[2];
+        nextPos[0] = getGame().getPlayer().getPlayerPosition()[0] + move[0];
+        nextPos[1] = getGame().getPlayer().getPlayerPosition()[1] + move[1];
+        return nextPos;
+    }
+
+    private boolean verifNextLocationExists(int[] nextPos) {
+        if (nextPos[0] < 0 || nextPos[1] < 0 || nextPos[0] >= getGame().getWorldMap().getXlength()
+                || nextPos[1] >= getGame().getWorldMap().getYlength()) {
+            if (getGame().getWorldMap().getLocation(nextPos) != null) {
+                if (!getGame().getWorldMap().getLocation(nextPos).getIsLocked()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 }
