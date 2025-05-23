@@ -11,7 +11,7 @@ public class ComMove extends Command {
     public void execute(String argument) {
         if (moveExist(argument)) {
              
-            int[] nextPos = nextPosition(transcriptDirection(argument););
+            int[] nextPos = nextPosition(transcriptDirection(argument));
             if (verifNextLocationExists(nextPos)) {
                 getGame().getPlayer().setPlayerPosition(nextPos);
                 displayMove(argument, nextPos);
