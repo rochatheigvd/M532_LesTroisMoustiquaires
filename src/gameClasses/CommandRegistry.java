@@ -13,10 +13,36 @@ public class CommandRegistry {
         return this.commandList;
     }
 
-    public void addCommand(Command command) {
-        this.commandList.add(command);
+    public boolean addCommand(Command command) {
+        if (commandList.contains(command)) {
+            return false;
+        } else {
+            this.commandList.add(command);
+            return true;
+        }
     }
 
     public void userInput(String input) {
+        input = input.toLowerCase();
+        String[] newStr = input.split(" ");
+        int i = 0;
+        boolean commandFind = false;
+        do {
+            Command command = this.commandList.get(i);
+            if (command.getVerb().equals(newStr[0])) {
+                commandFind = true;
+                if (newStr.length >= 2) {
+                    this.commandList.get(i).execute(newStr[1]);
+                } else {
+                    this.commandList.get(i).execute(null);
+                }
+            } else {
+                i++;
+            }
+        } while (!commandFind || i < commandList.size());
+        if (commandFind) {
+            System.out.println("Commande inexistante");
+        }
     }
+
 }
