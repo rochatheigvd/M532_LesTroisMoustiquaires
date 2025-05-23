@@ -39,7 +39,7 @@ public class CommandRegistry {
             } else {
                 i++;
             }
-        } while (!commandFind || i < commandList.size());
+        } while (!commandFind || i < this.commandList.size());
         if (commandFind) {
             System.out.println("Commande inexistante");
         }
