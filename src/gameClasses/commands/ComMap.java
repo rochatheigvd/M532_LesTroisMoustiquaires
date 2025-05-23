@@ -9,6 +9,10 @@ public class ComMap extends Command {
         super(verb, description);
     }
 
+    /*
+     * J'ai implémenté l'interface de IPrintable dans Location. Je ne sais pas si
+     * c'était juste...
+     */
     @Override
     public void execute(String argument) {
         IPrintable[][] map = getGame().getWorldMap().getWorldMap();
