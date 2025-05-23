@@ -14,9 +14,13 @@ public class ComLook extends Command {
     }
 
     private void displayLook(Location location) {
-        System.out.println("Place :"+ location.getName());
         System.out.println("You see a " + location.getItemList().size() + " items");
         int i;
+        if(location.getItemList().size() == 0 && location.getPuzzleList().size() == 0) {
+            System.out.println("There are no items in this location.");
+        } else {
+            System.out.println("There are " + location.getItemList().size() + " items in this location.");
+        }
         for (i = 0; i <= location.getItemList().size(); i++) {
             System.out.println("a " + location.getItemList().get(i).getLookDescr());
             if (i < location.getItemList().size()) {

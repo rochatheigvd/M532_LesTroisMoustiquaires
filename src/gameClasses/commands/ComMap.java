@@ -9,6 +9,7 @@ public class ComMap extends Command {
 
     @Override
     public void execute(String argument) {
+        
 
     }
 }
