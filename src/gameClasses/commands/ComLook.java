@@ -14,7 +14,6 @@ public class ComLook extends Command {
     }
 
     private void displayLook(Location location) {
-        System.out.println("Place :"+ location.getName());
         System.out.println("You see a " + location.getItemList().size() + " items");
         int i;
         for (i = 0; i <= location.getItemList().size(); i++) {
