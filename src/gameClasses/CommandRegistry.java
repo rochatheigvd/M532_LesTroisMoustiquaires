@@ -14,7 +14,7 @@ public class CommandRegistry {
     }
 
     public boolean addCommand(Command command) {
-        if (commandList.contains(command)) {
+        if (this.commandList.contains(command)) {
             return false;
         } else {
             this.commandList.add(command);
