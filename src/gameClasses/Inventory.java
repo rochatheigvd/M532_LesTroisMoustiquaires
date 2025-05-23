@@ -9,8 +9,8 @@ public class Inventory {
         this.itemList = new ArrayList<>();
     }
 
-    getItemList() {
-        return this.itemList;
+    public ArrayList<Item> getItemList() {
+        return itemList;
     }
 
     public void addItem(Item item) {
@@ -21,7 +21,13 @@ public class Inventory {
         this.itemList.remove(item);
     }
 
-    public Item getItem(String name) { 
-           
+    public Item getItem(String name) {
+        Item itemToFind = null;
+        for (Item item : this.itemList) {
+            if (item.getName().equals(name)) {
+                itemToFind = item;
+            }
+        }
+        return itemToFind;
     }
 }
