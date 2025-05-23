@@ -12,9 +12,16 @@ public class Key extends Item {
         this.positionUsable = positionUsable;
     }
 
-    public String inspect() {
-        return "TEST";
+    public int[] getPositionUsable() {
+        return positionUsable;
     }
 
+    public int[] getPositionUnlockable() {
+        return positionUnlockable;
+    }
+    @Override
+    public String inspect() {
+        return this.getInspectDescr();
+    }
 
 }

@@ -4,8 +4,12 @@ import gameClasses.Item;
 
 public class Letter extends Item {
 
-    public String inspect() {
-        return "TEST";
+    public Letter(String name, String lookDescr, String inspectDescr) {
+        super(name, lookDescr, inspectDescr);
     }
 
+    @Override
+    public String inspect() {
+        return this.getInspectDescr();
+    }
 }
