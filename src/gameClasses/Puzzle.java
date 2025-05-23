@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class Puzzle {
     private String solution;
     private ArrayList<Item> rewards;
+    private String description;
 
-    public Puzzle(String solution) {
+    public Puzzle(String solution, String description) {
         this.solution = solution;
         this.rewards = new ArrayList<>();
+        this.description = description;
     }
 
     public String getSolution() {
@@ -18,6 +20,10 @@ public class Puzzle {
 
     public ArrayList<Item> getRewards() {
         return rewards;
+    }
+
+    public String getDescrPuzzle(){
+        return description;
     }
 
     public boolean addItemToRewards(Item item) {
