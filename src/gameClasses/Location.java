@@ -2,7 +2,9 @@ package gameClasses;
 
 import java.util.ArrayList;
 
-public class Location {
+import utils.IPrintable;
+
+public class Location implements IPrintable{ // Est-ce que on doit implémenter ça du coup ?
     private String name;
     private String descr;
     private boolean isLocked;
@@ -81,6 +83,20 @@ public class Location {
             this.puzzleList.add(puzzle);
             return true;
         }
+    }
+
+    /* ******************************************
+     * je ne sais pas s'il faut faire comme ça
+     ********************************************/
+
+    @Override
+    public String getPrintableString() {
+        return "Position du joueur";
+    }
+
+    @Override
+    public boolean isGrayedOut() {
+        return true;
     }
 
 }
