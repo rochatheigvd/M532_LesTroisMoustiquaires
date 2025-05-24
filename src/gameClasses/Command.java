@@ -13,6 +13,10 @@ public abstract class Command implements ICommand {
         this.description = description;
     }
 
+    public static void setGame(Game g) {
+        game = g;
+    }
+
     public String getDescription() {
         return description;
     }

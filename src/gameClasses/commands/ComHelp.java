@@ -1,6 +1,7 @@
 package gameClasses.commands;
 
 import gameClasses.Command;
+import gameClasses.CommandRegistry;
 
 public class ComHelp extends Command {
 
@@ -10,6 +11,10 @@ public class ComHelp extends Command {
 
     @Override
     public void execute(String argument) {
-
+        CommandRegistry registry = getGame().getCommandRegistry();
+        System.out.println("Available commands:");
+        for (Command cmd : registry.getCommandRegistry()) {
+            System.out.println(cmd.getVerb() + " - " + cmd.getDescription());
+        }
     }
 }

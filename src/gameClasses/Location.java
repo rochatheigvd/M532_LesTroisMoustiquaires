@@ -85,13 +85,9 @@ public class Location implements IPrintable{ // Est-ce que on doit implémenter 
         }
     }
 
-    /* ******************************************
-     * je ne sais pas s'il faut faire comme ça
-     ********************************************/
-
     @Override
     public String getPrintableString() {
-        return "Position du joueur";
+        return name; // Affiche le nom complet de la location
     }
 
     @Override

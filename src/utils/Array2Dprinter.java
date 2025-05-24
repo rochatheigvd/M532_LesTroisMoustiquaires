@@ -40,9 +40,9 @@ public class Array2Dprinter {
         int maxLength = findMaxLength(array2D); // Find the maximum length of elements for alignment purposes.
         int numColumns = array2D[0].length; // Get the number of columns in the array.
 
-        for (int row = 0; row < array2D.length; row++) {
-            appendHorizontalLine(output, maxLength, numColumns); // Print the top horizontal line for each element.
-            appendElements(output, array2D[row], maxLength, row == highlightRow, highlightColumn); // Print the elements in the row.
+        for (int y = 0; y < array2D[0].length; y++) {
+            appendHorizontalLine(output, maxLength, array2D.length);
+            appendElementsInverted(output, array2D, maxLength, highlightRow, highlightColumn, y);
         }
         appendHorizontalLine(output, maxLength, numColumns); // Print the last horizontal line of the array.
         return output.toString();
@@ -57,7 +57,7 @@ public class Array2Dprinter {
         output.append(System.lineSeparator());
     }
 
-    private static void appendElements(StringBuilder output, IPrintable[] row, int maxLength, boolean isHighlightRow, int highlightColumn) {
+    /*private static void appendElements(StringBuilder output, IPrintable[] row, int maxLength, boolean isHighlightRow, int highlightColumn) {
 
         output.append("|");
 
@@ -83,6 +83,37 @@ public class Array2Dprinter {
             .append(text)
             .append(" ".repeat(SPACING))
             .append("|");
+        }
+        output.append(System.lineSeparator());
+    }*/
+
+    private static void appendElementsInverted(StringBuilder output, IPrintable[][] array2D, int maxLength,
+            int highlightRow, int highlightColumn, int y) {
+        output.append("|");
+        for (int x = 0; x < array2D.length; x++) {
+            IPrintable element = array2D[x][y];
+            String text = (element != null) ? element.getPrintableString() : "";
+
+            double padding = (maxLength - text.length()) * 0.5;
+            int paddingBefore = (int) Math.floor(padding);
+            int paddingAfter = (int) Math.ceil(padding);
+
+            String paddingSpacesBefore = " ".repeat(paddingBefore);
+            String paddingSpacesAfter = " ".repeat(paddingAfter);
+
+            text = paddingSpacesBefore + text + paddingSpacesAfter;
+            if (x == highlightRow && y == highlightColumn) {
+                text = StringStyling.StyleString(text, highlightTextStyle, highlightTextColor,
+                        highlightBackgroundColor);
+            } else if (element != null && element.isGrayedOut()) {
+                text = StringStyling.StyleString(text, grayedOutTextStyle, grayedOutTextColor,
+                        grayedOutBackgroundColor);
+            }
+
+            output.append(" ".repeat(SPACING))
+                    .append(text)
+                    .append(" ".repeat(SPACING))
+                    .append("|");
         }
         output.append(System.lineSeparator());
     }

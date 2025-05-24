@@ -14,22 +14,23 @@ public class ComLook extends Command {
     }
 
     private void displayLook(Location location) {
-        System.out.println("You see a " + location.getItemList().size() + " items");
+        System.out.println("You see " + location.getItemList().size() + " items");
         int i;
-        for (i = 0; i <= location.getItemList().size(); i++) {
-            System.out.println("a " + location.getItemList().get(i).getLookDescr());
-            if (i < location.getItemList().size()) {
-                System.out.println(", ");
+        for (i = 0; i < location.getItemList().size(); i++) {
+            System.out.print("a " + location.getItemList().get(i).getLookDescr());
+            if (i < location.getItemList().size() - 1) {
+                System.out.print(", ");
             } else {
                 System.out.println(".");
             }
         }
-        for (i = 0; i <= location.getPuzzleList().size(); i++) {
-            System.out.println("a " + location.getPuzzleList().get(i).getDescrPuzzle());
-            if (i < location.getItemList().size()) {
-                System.out.println(", ");
+        for (i = 0; i < location.getPuzzleList().size(); i++) {
+            System.out.print("a " + location.getPuzzleList().get(i).getDescrPuzzle());
+            if (i < location.getPuzzleList().size() - 1) {
+                System.out.print(", ");
+            } else {
                 System.out.println(".");
-        }
+            }
         }
     }
 }
