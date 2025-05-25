@@ -10,22 +10,22 @@ public class ComMove extends Command {
     @Override
     public void execute(String argument) {
         if (moveExist(argument)) {
-             
+
             int[] nextPos = nextPosition(transcriptDirection(argument));
             if (verifNextLocationExists(nextPos)) {
                 getGame().getPlayer().setPlayerPosition(nextPos);
                 displayMove(argument, nextPos);
             } else {
-                System.out.println("impossible de bouger là-bas");
+                System.out.println(", you can't go there.");
             }
         } else {
-            System.out.println("Argument inconnu");
+            System.out.println(argument + " is not an argument for the command go.");
         }
     }
 
     private void displayMove(String argument, int[] nextPos) {
-        System.out.println("Vous vous êtes déplacé en" + argument);
-        System.out.println("Vous vous trouvez dans " + getGame().getWorldMap().getLocation(nextPos).getName());
+        System.out.println("You just move to " + argument + ".");
+        System.out.println("You are now in " + getGame().getWorldMap().getLocation(nextPos).getName() + ".");
         System.out.println(getGame().getWorldMap().getLocation(nextPos).getDescr());
     }
 
@@ -67,19 +67,25 @@ public class ComMove extends Command {
     }
 
     private boolean verifNextLocationExists(int[] nextPos) {
-        if (nextPos[0] < 0 || nextPos[1] < 0 || nextPos[0] >= getGame().getWorldMap().getXlength()
-                || nextPos[1] >= getGame().getWorldMap().getYlength()) {
+        if (nextPos[0] >= 0 && nextPos[1] >= 0 && nextPos[0] < getGame().getWorldMap().getXlength()
+                && nextPos[1] < getGame().getWorldMap().getYlength()) {
             if (getGame().getWorldMap().getLocation(nextPos) != null) {
                 if (!getGame().getWorldMap().getLocation(nextPos).getIsLocked()) {
                     return true;
                 } else {
+                    System.out.print("This location is locked");
                     return false;
+
                 }
             } else {
+                System.out.print("There is nothing");
                 return false;
+
             }
         } else {
+            System.out.print("This is not in the house");
             return false;
+
         }
     }
 
