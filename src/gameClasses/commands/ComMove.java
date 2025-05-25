@@ -9,17 +9,20 @@ public class ComMove extends Command {
 
     @Override
     public void execute(String argument) {
-        if (moveExist(argument)) {
-
-            int[] nextPos = nextPosition(transcriptDirection(argument));
-            if (verifNextLocationExists(nextPos)) {
-                getGame().getPlayer().setPlayerPosition(nextPos);
-                displayMove(argument, nextPos);
+        if (argument != null) {
+            if (moveExist(argument)) {
+                int[] nextPos = nextPosition(transcriptDirection(argument));
+                if (verifNextLocationExists(nextPos)) {
+                    getGame().getPlayer().setPlayerPosition(nextPos);
+                    displayMove(argument, nextPos);
+                } else {
+                    System.out.println(", you can't go there.");
+                }
             } else {
-                System.out.println(", you can't go there.");
+                System.out.println(argument + " is not an argument for the command go.");
             }
         } else {
-            System.out.println(argument + " is not an argument for the command go.");
+            System.out.println("There is not argument in your command.");
         }
     }
 

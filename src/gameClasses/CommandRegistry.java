@@ -38,7 +38,7 @@ public class CommandRegistry {
             }
         }
         if (!commandFound) {
-            System.out.println("Commande inexistante");
+            System.out.println("This command does not exist. Type help to see all the commands");
         }
     }
 
