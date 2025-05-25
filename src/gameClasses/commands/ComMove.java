@@ -29,7 +29,6 @@ public class ComMove extends Command {
     private void displayMove(String argument, int[] nextPos) {
         System.out.println("You just move to " + argument + ".");
         System.out.println("You are now in " + getGame().getWorldMap().getLocation(nextPos).getName() + ".");
-        System.out.println(getGame().getWorldMap().getLocation(nextPos).getDescr());
     }
 
     private boolean moveExist(String argument) {
