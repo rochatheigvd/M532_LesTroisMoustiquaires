@@ -25,23 +25,20 @@ public class CommandRegistry {
     public void userInput(String input) {
         input = input.toLowerCase();
         String[] newStr = input.split(" ");
-        int i = 0;
-        boolean commandFind = false;
-        do {
-            Command command = this.commandList.get(i);
+        boolean commandFound = false;
+        for (Command command : this.commandList) {
             if (command.getVerb().equals(newStr[0])) {
-                commandFind = true;
+                commandFound = true;
                 if (newStr.length >= 2) {
-                    this.commandList.get(i).execute(newStr[1]);
+                    command.execute(newStr[1]);
                 } else {
-                    this.commandList.get(i).execute(null);
+                    command.execute(null);
                 }
-            } else {
-                i++;
+                break;
             }
-        } while (!commandFind || i < this.commandList.size());
-        if (commandFind) {
-            System.out.println("Commande inexistante");
+        }
+        if (!commandFound) {
+            System.out.println("This command does not exist. Type help to see all the commands");
         }
     }
 

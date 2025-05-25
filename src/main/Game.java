@@ -16,11 +16,32 @@ public class Game {
         System.out.println("Initializing game...");
     }
 
+    public Game() {
+    }
+
     public void run() {
         System.out.println("Running game...");
-        // your runtime code here...
+        System.out.println("Type 'help' to see available commands.");
 
-        // end of game
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.print("> ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) {
+                running = false;
+                System.out.println("Goodbye!");
+            } else if (!input.isEmpty()) {
+                if (commandRegistry != null) {
+                    commandRegistry.userInput(input);
+                } else {
+                    System.out.println("Command system not initialized.");
+                }
+            }
+        }
+        scanner.close();
     }
 
     public Player getPlayer() {
