@@ -92,7 +92,7 @@ public class Location implements IPrintable{ // Est-ce que on doit implémenter 
 
     @Override
     public boolean isGrayedOut() {
-        return true;
+        return !this.isLocked;
     }
 
 }
