@@ -1,7 +1,5 @@
 package gameClasses.commands;
 
-import java.util.List;
-
 import gameClasses.Command;
 import gameClasses.Item;
 
