@@ -24,7 +24,7 @@ public class Inventory {
     public Item getItem(String name) {
         Item itemToFind = null;
         for (Item item : this.itemList) {
-            if (item.getName().equals(name)) {
+            if (item.getName().toLowerCase().equals(name)) {
                 itemToFind = item;
             }
         }
