@@ -1,6 +1,7 @@
 package gameClasses.commands;
 
-import gameClasses.Command;
+import java.util.List;
+import gameClasses.*;
 
 public class ComSay extends Command {
     public ComSay(String verb, String description) {
@@ -9,6 +10,40 @@ public class ComSay extends Command {
 
     @Override
     public void execute(String argument) {
+        if (argument != null) {
+            Puzzle p = verifSolution(argument);
+            if (p != null) {
+                List<Item> items = p.getRewards();
+                if (!items.isEmpty()) {
+                    System.out.print("You win : ");
+                    for (int i = 0; i < items.size(); i++) {
+                        Item item = items.get(i);
+                        getGame().getPlayer().getInventory().addItem(item);
+                        if (i == items.size() - 1) {
+                            System.out.println(item.getName() + ".");
+                        } else {
+                            System.out.print(item.getName() + ", ");
+                        }
+                    }
+                    getPlayerLocation().dropPuzzle(p);
+                } else {
+                    System.out.println("The puzzle give you nothing.");
+                }
+            } else {
+                System.out.println("This is not the good solution. Try again.");
+            }
+        } else {
+            System.out.println("There is not argument in your command.");
+        }
+    }
 
+    private Puzzle verifSolution(String argument) {
+        List<Puzzle> puzzles = getPlayerLocation().getPuzzleList();
+        for (Puzzle puzzle : puzzles) {
+            if (puzzle.getSolution().toLowerCase().equals(argument)) {
+                return puzzle;
+            }
+        }
+        return null;
     }
 }
