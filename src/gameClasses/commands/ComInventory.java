@@ -18,7 +18,7 @@ public class ComInventory extends Command {
     private void displayInventory(ArrayList<Item> itemList) {
         if (!itemList.isEmpty()) {
             for (Item item : itemList) {
-                System.out.println("- " + item.getName() + " : " + item.getLookDescr());
+                System.out.println("  - " + item.getName() + " : " + item.getLookDescr());
             }
         } else {
             System.out.println("Your inventory is empty.");

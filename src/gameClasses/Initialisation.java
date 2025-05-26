@@ -83,6 +83,24 @@ public class Initialisation {
             "What fruit is red and often found in kitchens? Solve this where the facade are faded."
         ));
 
+        letters.put("hint_1", new gameClasses.items.Letter(
+            "hint",
+            "A hint for the final puzzle",
+            "You see the beginning of a cryptic code: De"
+        ));
+
+        letters.put("hint_2", new gameClasses.items.Letter(
+            "hint_2",
+            "A hint for the final puzzle",
+            "You see the beginning of a cryptic code: Don"
+        ));
+
+        letters.put("hint_3", new gameClasses.items.Letter(
+            "hint_3",
+            "A hint for the final puzzle",
+            "You see the beginning of a cryptic code: Inf1"
+        ));
+
 
     }
 
@@ -90,17 +108,17 @@ public class Initialisation {
         // Puzzle for Kitchen Key
         puzzles.put("Hall Right", new Puzzle(
             "broom",
-            "Find the hidden cleaning tool to get the Storage Closet Key."));
+            "A door blocks your way. Answer the riddle"));
 
         // Storage Closet puzzle gives Toilet Key
         puzzles.put("Storage Closet", new Puzzle(
             "water",
-            "Answer the question about what flows but never runs out to get the Toilet Key."));
+            "A door is locked. Answer the riddle"));
 
         // Toilet puzzle gives Kitchen Key
         puzzles.put("Toilet", new Puzzle(
             "apple",
-            "Solve the riddle about fruit to get the Kitchen Key."));
+            "A door is locked. Answer the riddle"));
     }
 
     private void createLocations() {

@@ -25,6 +25,6 @@ public class ComInspect extends Command {
 
     private void displayItem(Item i) {
         System.out.println("Inspecting " + i.getName());
-        System.out.println("The item says " + '"' + i.getInspectDescr() + '"' + '.');
+        System.out.println("The item says " + '"' + i.inspect() + '"' + '.');
     }
 }
