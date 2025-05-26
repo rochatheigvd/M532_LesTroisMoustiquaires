@@ -35,7 +35,7 @@ public class ComUse extends Command {
     }
 
     private void displayUse(Key key) {
-        System.out.println("You used " + key.getName() + ", it open "
+        System.out.println("You used " + key.getName() + ", it opens "
                 + getGame().getWorldMap().getLocation(key.getPositionUnlockable()).getName() + ".");
     }
 
