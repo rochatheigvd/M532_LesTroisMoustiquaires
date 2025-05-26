@@ -25,4 +25,6 @@ public abstract class Item implements IInspectable {
         return inspectDescr;
     }
 
+    public abstract String inspect();
+
 }
