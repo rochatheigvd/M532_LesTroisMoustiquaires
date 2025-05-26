@@ -66,7 +66,7 @@ public class Initialisation {
         letters.put("Letter_1", new gameClasses.items.Letter(
             "old_letter",
             "A beautifully written old letter",
-            "What object is used to clean the floor but never gets dirty? You will need it in the room with many doors."
+            "You will find a corridor with many doors and a bright window at the end. There you will say the answer to my question. What object is used to clean the floor but never gets dirty?"
         ));
 
         //Letter for ?
@@ -83,42 +83,48 @@ public class Initialisation {
             "What fruit is red and often found in kitchens? Solve this where the facade are faded."
         ));
 
+        //hint1 for endgame
         letters.put("hint_1", new gameClasses.items.Letter(
             "hint",
             "A hint for the final puzzle",
             "You see the beginning of a cryptic code: De"
         ));
 
+        //hint2 for endgame
         letters.put("hint_2", new gameClasses.items.Letter(
             "hint_2",
             "A hint for the final puzzle",
             "You see the beginning of a cryptic code: Don"
         ));
 
+        //hint3 for endgame
         letters.put("hint_3", new gameClasses.items.Letter(
             "hint_3",
             "A hint for the final puzzle",
             "You see the beginning of a cryptic code: Inf1"
         ));
-
-
     }
 
     private void createPuzzles() {
-        // Puzzle for Kitchen Key
+        // Hall Right Puzzle gives Storage Closet Key
         puzzles.put("Hall Right", new Puzzle(
             "broom",
-            "A door blocks your way. Answer the riddle"));
+            "A door blocks your way. Answer the riddle."));
 
         // Storage Closet puzzle gives Toilet Key
         puzzles.put("Storage Closet", new Puzzle(
             "water",
-            "A door is locked. Answer the riddle"));
+            "A door is locked. Answer the riddle."));
 
         // Toilet puzzle gives Kitchen Key
         puzzles.put("Toilet", new Puzzle(
             "apple",
-            "A door is locked. Answer the riddle"));
+            "A door is locked. Answer the riddle."));
+
+        // Final puzzle
+        puzzles.put("Endgame", new Puzzle(
+            "Gabor",
+            "The entrance door is locked. Find the final solution, using the 3 hints hidden in the house."));
     }
 
     private void createLocations() {
