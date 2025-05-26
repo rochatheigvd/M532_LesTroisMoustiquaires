@@ -3,9 +3,9 @@ package gameClasses.commands;
 import gameClasses.Command;
 import gameClasses.Item;
 
-public class comInspect extends Command {
+public class ComInspect extends Command {
 
-    public comInspect(String verb, String description) {
+    public ComInspect(String verb, String description) {
         super(verb, description);
     }
 
