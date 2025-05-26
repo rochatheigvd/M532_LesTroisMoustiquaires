@@ -37,24 +37,24 @@ public class Initialisation {
 
     private void createItems() {
         // Key for Kitchen (locked)
-        keys.put("Kitchen Key", new gameClasses.items.Key(
-            "Kitchen Key",
+        keys.put("Kitchen_Key", new gameClasses.items.Key(
+            "Kitchen_Key",
             "A shiny brass key labeled 'Kitchen'.",
             "This key unlocks the kitchen door.",
             new int[] { 0, 0 },
             new int[] { 1, 0 }));
 
         // Key for Storage Closet (locked)
-        keys.put("Storage Closet Key", new gameClasses.items.Key(
-            "Storage Closet Key",
+        keys.put("Storage_Closet_Key", new gameClasses.items.Key(
+            "Storage_Closet_Key",
             "A small, rusty key with a tag that reads 'Storage Closet'.",
             "This key unlocks the storage closet.",
             new int[] { 2, 1 },
             new int[] { 1, 1 }));
 
         // Key for Toilet (locked)
-        keys.put("Toilet Key", new gameClasses.items.Key(
-            "Toilet Key",
+        keys.put("Toilet_Key", new gameClasses.items.Key(
+            "Toilet_Key",
             "A simple silver key with a blue ribbon.",
             "This key unlocks the bathroom.",
             new int[] { 0, 2 },
@@ -136,9 +136,9 @@ public class Initialisation {
     }
 
     private void linkItemsToRewards() {
-        puzzles.get("Hall Right").addItemToRewards(keys.get("Storage Closet Key"));
-        puzzles.get("Storage Closet").addItemToRewards(keys.get("Toilet Key"));
-        puzzles.get("Toilet").addItemToRewards(keys.get("Kitchen Key"));
+        puzzles.get("Hall Right").addItemToRewards(keys.get("Storage_Closet_Key"));
+        puzzles.get("Storage Closet").addItemToRewards(keys.get("Toilet_Key"));
+        puzzles.get("Toilet").addItemToRewards(keys.get("Kitchen_Key"));
     }
 
     private void linkPuzzles() {
