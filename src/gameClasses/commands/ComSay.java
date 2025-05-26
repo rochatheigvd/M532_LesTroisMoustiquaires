@@ -27,7 +27,7 @@ public class ComSay extends Command {
                     }
                     getPlayerLocation().dropPuzzle(p);
                 } else {
-                    System.out.println("The puzzle give you nothing.");
+                    System.out.println("The puzzle gave you nothing.");
                 }
             } else {
                 System.out.println("This is not the good solution. Try again.");
