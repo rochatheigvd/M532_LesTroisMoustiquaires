@@ -197,6 +197,7 @@ public class Initialisation {
         locations.get("Hall Right").addPuzzleToList(puzzles.get("Hall Right"));
         locations.get("Storage Closet").addPuzzleToList(puzzles.get("Storage Closet"));
         locations.get("Toilet").addPuzzleToList(puzzles.get("Toilet"));
+        locations.get("Hall Left").addPuzzleToList(puzzles.get("Endgame"));
     }
 
     private void linkLocations() {
