@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import gameClasses.items.Key;
 import main.Game;
+import gameClasses.items.Letter;
 
 public class Initialisation {
 
@@ -16,6 +17,7 @@ public class Initialisation {
     private Map<String, Command> commands = new HashMap<>();
     private Map<String, Key> keys = new HashMap<>();
     private Map<String, Puzzle> puzzles = new HashMap<>();
+    private Map<String, Letter> letters = new HashMap<>();
 
     public void initGame() {
         createInstances();
@@ -59,6 +61,29 @@ public class Initialisation {
             "This key unlocks the bathroom.",
             new int[] { 0, 2 },
             new int[] { 1, 2 }));
+
+        //Letter for Hall Left
+        letters.put("Letter_1", new gameClasses.items.Letter(
+            "old_letter",
+            "A beautifully written old letter",
+            "What object is used to clean the floor but never gets dirty? You will need it in the room with many doors."
+        ));
+
+        //Letter for ?
+        letters.put("Letter_2", new gameClasses.items.Letter(
+            "mysterious_letter",
+            "A mysterious note",
+            "What flows but never runs out? Solve this where you usually eat."
+        ));
+
+        //Letter for ?
+        letters.put("Letter_3", new gameClasses.items.Letter(
+            "cryptic_letter",
+            "A cryptic message",
+            "What fruit is red and often found in kitchens? Solve this where the facade are faded."
+        ));
+
+
     }
 
     private void createPuzzles() {
@@ -133,6 +158,9 @@ public class Initialisation {
     }
 
     private void linkItemsToLocations() {
+        locations.get("Hall Left").addItemToList(letters.get("Letter_1"));
+        locations.get("Storage Closet").addItemToList(letters.get("Letter_2"));
+        locations.get("Kitchen").addItemToList(letters.get("Letter_3"));
     }
 
     private void linkItemsToRewards() {
