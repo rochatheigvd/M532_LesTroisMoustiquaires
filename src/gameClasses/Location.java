@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import utils.IPrintable;
 
-public class Location implements IPrintable{ // Est-ce que on doit implémenter ça du coup ?
+public class Location implements IPrintable { // Est-ce que on doit implémenter ça du coup ?
     private String name;
     private String descr;
     private boolean isLocked;
@@ -59,8 +59,8 @@ public class Location implements IPrintable{ // Est-ce que on doit implémenter 
 
     public boolean unlockLocation() {
 
-        if (this.isLocked == false) {
-            this.isLocked = true;
+        if (this.isLocked == true) {
+            this.isLocked = false;
             return true;
         } else {
             return false;

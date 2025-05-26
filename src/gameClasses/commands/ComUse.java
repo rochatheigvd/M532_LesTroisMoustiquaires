@@ -18,6 +18,7 @@ public class ComUse extends Command {
                     Key key = (Key) item;
                     if (getPlayerLocation().equals(getGame().getWorldMap().getLocation(key.getPositionUsable()))) {
                         displayUse(key);
+                        getGame().getWorldMap().getLocation(key.getPositionUnlockable()).unlockLocation();
                         getGame().getPlayer().getInventory().removeItem(item);
                     } else {
                         System.out.println("You are not in the right location.");
@@ -25,8 +26,9 @@ public class ComUse extends Command {
                 } else {
                     System.out.println("This object can not be used.");
                 }
+            } else {
+                System.out.println("There is no object with this name in your inventory.");
             }
-            System.out.println("There is no object with this name in your inventory.");
         } else {
             System.out.println("There is not argument in your command.");
         }
