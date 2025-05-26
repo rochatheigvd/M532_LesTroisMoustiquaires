@@ -21,7 +21,7 @@ public class ComUse extends Command {
         }
     }
 
-    public Item itemFinder(String argument) {
+    private Item itemFinder(String argument) {
         return getGame().getPlayer().getInventory().getItem(argument);
     }
 }

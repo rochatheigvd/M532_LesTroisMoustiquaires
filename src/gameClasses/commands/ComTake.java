@@ -24,7 +24,7 @@ public class ComTake extends Command {
         }
     }
 
-    public Item itemFinder(String argument) {
+    private Item itemFinder(String argument) {
         List<Item> items = getPlayerLocation().getItemList();
         for (Item item : items) {
             if (item.getName().toLowerCase().equals(argument)) {
