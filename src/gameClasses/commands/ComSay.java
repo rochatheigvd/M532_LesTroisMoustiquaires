@@ -11,26 +11,30 @@ public class ComSay extends Command {
     @Override
     public void execute(String argument) {
         if (argument != null) {
-            Puzzle p = verifSolution(argument);
-            if (p != null) {
-                List<Item> items = p.getRewards();
-                if (!items.isEmpty()) {
-                    System.out.print("You win : ");
-                    for (int i = 0; i < items.size(); i++) {
-                        Item item = items.get(i);
-                        getGame().getPlayer().getInventory().addItem(item);
-                        if (i == items.size() - 1) {
-                            System.out.println(item.getName() + ".");
-                        } else {
-                            System.out.print(item.getName() + ", ");
+            if (!getPlayerLocation().getPuzzleList().isEmpty()) {
+                Puzzle p = verifSolution(argument);
+                if (p != null) {
+                    List<Item> items = p.getRewards();
+                    if (!items.isEmpty()) {
+                        System.out.print("You win : ");
+                        for (int i = 0; i < items.size(); i++) {
+                            Item item = items.get(i);
+                            getGame().getPlayer().getInventory().addItem(item);
+                            if (i == items.size() - 1) {
+                                System.out.println(item.getName() + ".");
+                            } else {
+                                System.out.print(item.getName() + ", ");
+                            }
                         }
+                        getPlayerLocation().dropPuzzle(p);
+                    } else {
+                        System.out.println("The puzzle gave you nothing.");
                     }
-                    getPlayerLocation().dropPuzzle(p);
                 } else {
-                    System.out.println("The puzzle gave you nothing.");
+                    System.out.println("This is not the good solution. Try again.");
                 }
             } else {
-                System.out.println("This is not the good solution. Try again.");
+                System.out.println("There is no puzzle in this location.");
             }
         } else {
             System.out.println("There is not argument in your command.");
