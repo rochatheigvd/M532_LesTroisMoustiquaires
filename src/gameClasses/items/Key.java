@@ -1,5 +1,6 @@
 package gameClasses.items;
 
+import gameClasses.Command;
 import gameClasses.Item;
 
 public class Key extends Item {
@@ -19,9 +20,11 @@ public class Key extends Item {
     public int[] getPositionUnlockable() {
         return positionUnlockable;
     }
+
     @Override
     public String inspect() {
-        return this.getInspectDescr();
+        return this.getInspectDescr() + " It is usable in "
+                + Command.getGame().getWorldMap().getLocation(this.positionUsable).getName();
     }
 
 }

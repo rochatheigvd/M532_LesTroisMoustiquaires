@@ -47,18 +47,23 @@ public class Game {
     public Player getPlayer() {
         return player;
     }
+
     public WorldMap getWorldMap() {
         return worldMap;
     }
+
     public CommandRegistry getCommandRegistry() {
         return commandRegistry;
     }
+
     public void setPlayer(Player player) {
         this.player = player;
     }
+
     public void setWorldMap(WorldMap worldMap) {
         this.worldMap = worldMap;
     }
+
     public void setCommandRegistry(CommandRegistry commandRegistry) {
         this.commandRegistry = commandRegistry;
     }
