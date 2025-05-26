@@ -108,10 +108,10 @@ public class Initialisation {
         commands.put("help", new gameClasses.commands.ComHelp("help", "Show available commands"));
         commands.put("look", new gameClasses.commands.ComLook("look", "Look around in the current location"));
         commands.put("inspect", new gameClasses.commands.ComInspect("inspect", "Inspect an item from your inventory"));
-        commands.put("go", new gameClasses.commands.ComMove("go", "Move to an unlocked adjacent location (north, east, south, west)"));
+        commands.put("move", new gameClasses.commands.ComMove("move", "Move to an unlocked adjacent location (north, east, south, west)"));
         commands.put("take", new gameClasses.commands.ComTake("take", "Pick up an item from the current location"));
         commands.put("inventory", new gameClasses.commands.ComInventory("inventory", "Show your inventory"));
-        commands.put("use", new gameClasses.commands.ComUse("use", "Use an item"));
+        commands.put("use", new gameClasses.commands.ComUse("use", "Use an item from your inventory"));
         commands.put("map", new gameClasses.commands.ComMap("map", "Show the world map and your current location"));
         commands.put("say", new gameClasses.commands.ComSay("say", "Say something to solve a puzzle"));
     }
