@@ -19,7 +19,7 @@ public class Array2Dprinter {
 
     private static Color grayedOutTextColor = Color.BLACK;
     private static Style grayedOutTextStyle = Style.NORMAL;
-    private static Color grayedOutBackgroundColor = Color.BLACK;
+    private static Color grayedOutBackgroundColor = Color.GREEN;
 
     public static void setGrayedOutStyle(Style style, Color color, Color backgroundColor) {
         grayedOutTextColor = color;
