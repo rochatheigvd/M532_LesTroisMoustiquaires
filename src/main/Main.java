@@ -14,7 +14,7 @@ public class Main {
         Initialisation initialisation = new Initialisation();
         initialisation.initGame();
 
-        System.out.println("You are trapped inside a preaty house, and you need to escape!");
+        System.out.println("You are trapped inside a pretty house, and you need to escape!");
 
         Game game = initialisation.getGame();
         game.run();
