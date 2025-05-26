@@ -34,7 +34,7 @@ public class ComSay extends Command {
                     System.out.println("This is not the good solution. Try again.");
                 }
             } else {
-                System.out.println("There is no puzzle in this location.");
+                System.out.println("There is no puzzle in " + getPlayerLocation().getName() + ".");
             }
         } else {
             System.out.println("There is not argument in your command.");
