@@ -16,6 +16,7 @@ public class ComSay extends Command {
                 if (p != null) {
                     List<Item> items = p.getRewards();
                     if (!items.isEmpty()) {
+                        System.out.println("Congratulations! You solved the puzzle.");
                         System.out.print("You win : ");
                         for (int i = 0; i < items.size(); i++) {
                             Item item = items.get(i);

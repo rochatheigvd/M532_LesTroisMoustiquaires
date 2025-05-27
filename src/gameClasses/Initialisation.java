@@ -109,22 +109,22 @@ public class Initialisation {
         // Hall Right Puzzle gives Storage Closet Key
         puzzles.put("Puzzle_1", new Puzzle(
             "broom",
-            "A door blocks your way. Answer the riddle."));
+            "It's written carved into the wood of one of the doors: \"Answer here and you will be given a reward.\""));
 
         // Dining Room puzzle gives Toilet Key
         puzzles.put("Puzzle_2", new Puzzle(
             "water",
-            "There's a weird jug on the wooden table. Answer the riddle."));
+            "There's a weird jug on the wooden table. It is written under it: \"I'm listening to your answer.\""));
 
         // Living Room puzzle gives Kitchen Key
         puzzles.put("Puzzle_3", new Puzzle(
-            "apple",
-            "The kitchen is perfectly clean, but there's an insanely big bowl of fruits. Answer the riddle."));
+            "fire",
+            "It is written in the dust on the crackling fireplace: \"Say the answer distincly here.\""));
 
         // Final puzzle
         puzzles.put("Puzzle_Final", new Puzzle(
             "Gabor",
-            "The entrance door is locked. Find the final solution, using the 3 hints hidden in the house."));
+            "The entrance door is locked. Find the final solution, using the 3 hints hidden in the house"));
     }
 
     private void createLocations() {
@@ -191,15 +191,15 @@ public class Initialisation {
     private void linkItemsToRewards() {
         puzzles.get("Puzzle_1").addItemToRewards(keys.get("Storage_Closet_Key"));
         puzzles.get("Puzzle_2").addItemToRewards(keys.get("Toilet_Key"));
-        puzzles.get("Puzzle_2").addItemToRewards(keys.get("hint_1"));
+        puzzles.get("Puzzle_2").addItemToRewards(letters.get("hint_1"));
         puzzles.get("Puzzle_3").addItemToRewards(keys.get("Kitchen_Key"));
-        puzzles.get("Puzzle_3").addItemToRewards(keys.get("hint_2"));
+        puzzles.get("Puzzle_3").addItemToRewards(letters.get("hint_2"));
     }
 
     private void linkPuzzles() {
-        locations.get("Hall Right").addPuzzleToList(puzzles.get("Hall Right"));
-        locations.get("Storage Closet").addPuzzleToList(puzzles.get("Storage Closet"));
-        locations.get("Toilet").addPuzzleToList(puzzles.get("Toilet"));
+        locations.get("Hall Right").addPuzzleToList(puzzles.get("Puzzle_1"));
+        locations.get("Dining Room").addPuzzleToList(puzzles.get("Puzzle_2"));
+        locations.get("Living Room").addPuzzleToList(puzzles.get("Puzzle_3"));
         locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
         game.setFinalPuzzle(puzzles.get("Puzzle_Final"));
     }
