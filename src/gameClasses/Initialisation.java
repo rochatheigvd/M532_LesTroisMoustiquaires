@@ -66,63 +66,63 @@ public class Initialisation {
         letters.put("Letter_1", new gameClasses.items.Letter(
             "old_letter",
             "A beautifully written old letter",
-            "You will find a corridor with many doors and a bright window at the end. There you will say the answer to my question. What object is used to clean the floor but never gets dirty?"
+            "You will find a corridor with many doors, and a bright window at the end. There you will say the answer to my question. What object is used to clean the floor but never gets dirty?"
         ));
 
-        //Letter for ?
+        //Letter for Dining Room
         letters.put("Letter_2", new gameClasses.items.Letter(
-            "mysterious_letter",
+            "mysterious_note",
             "A mysterious note",
-            "What flows but never runs out? Solve this where you usually eat."
+            "What flows but never runs out? Say the answer out loud where you usually eat."
         ));
 
-        //Letter for ?
+        //Letter for Living Room
         letters.put("Letter_3", new gameClasses.items.Letter(
             "cryptic_letter",
             "A cryptic message",
-            "What fruit is red and often found in kitchens? Solve this where the facade are faded."
+            "What fruit is red and often found in kitchens? Solve this in front of the crackling fireplace."
         ));
 
-        //hint1 for endgame
+        //hint1 for puzzle_final
         letters.put("hint_1", new gameClasses.items.Letter(
-            "hint",
+            "hint_1",
             "A hint for the final puzzle",
-            "You see the beginning of a cryptic code: De"
+            "You see a part of a cryptic code: De"
         ));
 
-        //hint2 for endgame
+        //hint2 for puzzle_final
         letters.put("hint_2", new gameClasses.items.Letter(
             "hint_2",
             "A hint for the final puzzle",
-            "You see the beginning of a cryptic code: Don"
+            "You see a part of a cryptic code: Don"
         ));
 
-        //hint3 for endgame
+        //hint3 for puzzle_final
         letters.put("hint_3", new gameClasses.items.Letter(
             "hint_3",
             "A hint for the final puzzle",
-            "You see the beginning of a cryptic code: Inf1"
+            "You see a part of a cryptic code: Inf1"
         ));
     }
 
     private void createPuzzles() {
         // Hall Right Puzzle gives Storage Closet Key
-        puzzles.put("Hall Right", new Puzzle(
+        puzzles.put("Puzzle_1", new Puzzle(
             "broom",
             "A door blocks your way. Answer the riddle."));
 
-        // Storage Closet puzzle gives Toilet Key
-        puzzles.put("Storage Closet", new Puzzle(
+        // Dining Room puzzle gives Toilet Key
+        puzzles.put("Puzzle_2", new Puzzle(
             "water",
-            "A door is locked. Answer the riddle."));
+            "There's a weird jug on the wooden table. Answer the riddle."));
 
-        // Toilet puzzle gives Kitchen Key
-        puzzles.put("Toilet", new Puzzle(
+        // Living Room puzzle gives Kitchen Key
+        puzzles.put("Puzzle_3", new Puzzle(
             "apple",
-            "A door is locked. Answer the riddle."));
+            "The kitchen is perfectly clean, but there's an insanely big bowl of fruits. Answer the riddle."));
 
         // Final puzzle
-        puzzles.put("Endgame", new Puzzle(
+        puzzles.put("Puzzle_Final", new Puzzle(
             "Gabor",
             "The entrance door is locked. Find the final solution, using the 3 hints hidden in the house."));
     }
@@ -184,20 +184,24 @@ public class Initialisation {
     private void linkItemsToLocations() {
         locations.get("Hall Left").addItemToList(letters.get("Letter_1"));
         locations.get("Storage Closet").addItemToList(letters.get("Letter_2"));
-        locations.get("Kitchen").addItemToList(letters.get("Letter_3"));
+        locations.get("Toilet").addItemToList(letters.get("Letter_3"));
+        locations.get("Kitchen").addItemToList(letters.get("hint_3"));
     }
 
     private void linkItemsToRewards() {
-        puzzles.get("Hall Right").addItemToRewards(keys.get("Storage_Closet_Key"));
-        puzzles.get("Storage Closet").addItemToRewards(keys.get("Toilet_Key"));
-        puzzles.get("Toilet").addItemToRewards(keys.get("Kitchen_Key"));
+        puzzles.get("Puzzle_1").addItemToRewards(keys.get("Storage_Closet_Key"));
+        puzzles.get("Puzzle_2").addItemToRewards(keys.get("Toilet_Key"));
+        puzzles.get("Puzzle_2").addItemToRewards(keys.get("hint_1"));
+        puzzles.get("Puzzle_3").addItemToRewards(keys.get("Kitchen_Key"));
+        puzzles.get("Puzzle_3").addItemToRewards(keys.get("hint_2"));
     }
 
     private void linkPuzzles() {
         locations.get("Hall Right").addPuzzleToList(puzzles.get("Hall Right"));
         locations.get("Storage Closet").addPuzzleToList(puzzles.get("Storage Closet"));
         locations.get("Toilet").addPuzzleToList(puzzles.get("Toilet"));
-        locations.get("Hall Left").addPuzzleToList(puzzles.get("Endgame"));
+        locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
+        game.setFinalPuzzle(puzzles.get("Puzzle_Final"));
     }
 
     private void linkLocations() {
