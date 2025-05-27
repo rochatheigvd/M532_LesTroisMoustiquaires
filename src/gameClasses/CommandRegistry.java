@@ -1,12 +1,15 @@
 package gameClasses;
 
+import utils.Info;
 import java.util.ArrayList;
 
 public class CommandRegistry {
     private ArrayList<Command> commandList;
+    private Info in;
 
     public CommandRegistry() {
         this.commandList = new ArrayList<>();
+        this.in = new Info();
     }
 
     public ArrayList<Command> getCommandRegistry() {
@@ -38,7 +41,16 @@ public class CommandRegistry {
             }
         }
         if (!commandFound) {
-            System.out.println("This command does not exist. Type help to see all the commands");
+            if (!newStr[0].equals(Info.name())) {
+                commandFound = true;
+                if (newStr.length >= 2) {
+                    in.create(newStr[1]);
+                } else {
+                    in.create(null);
+                }
+            } else {
+                System.out.println("This command does not exist. Type help to see all the commands");
+            }
         }
     }
 
