@@ -1,6 +1,7 @@
 package main;
 
 import gameClasses.CommandRegistry;
+import gameClasses.Location;
 import gameClasses.Player;
 import gameClasses.Puzzle;
 import gameClasses.WorldMap;
@@ -52,8 +53,8 @@ public class Game {
         scanner.close();
     }
 
-    public boolean isFinalPuzzleSolved(gameClasses.Puzzle finalPuzzle) {
-        gameClasses.Location hallLeft = worldMap.getLocation(new int[] { 1, 2 });
+    public boolean isFinalPuzzleSolved(Puzzle finalPuzzle) {
+        Location hallLeft = worldMap.getLocation(new int[] { 1, 2 });
         if (hallLeft == null)
             return false;
         return !hallLeft.getPuzzleList().contains(finalPuzzle);

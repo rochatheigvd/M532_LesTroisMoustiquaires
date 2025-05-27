@@ -15,6 +15,7 @@ public class ComSay extends Command {
                 Puzzle p = verifSolution(argument);
                 if (p != null) {
                     List<Item> items = p.getRewards();
+                    getPlayerLocation().dropPuzzle(p);
                     if (!items.isEmpty()) {
                         System.out.println("Congratulations! You solved the puzzle.");
                         System.out.print("You win : ");
@@ -27,7 +28,6 @@ public class ComSay extends Command {
                                 System.out.print(item.getName() + ", ");
                             }
                         }
-                        getPlayerLocation().dropPuzzle(p);
                     } else {
                         System.out.println("The puzzle gave you nothing.");
                     }
