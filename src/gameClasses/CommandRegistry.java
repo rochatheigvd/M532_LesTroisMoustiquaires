@@ -41,7 +41,7 @@ public class CommandRegistry {
             }
         }
         if (!commandFound) {
-            if (!newStr[0].equals(Info.name())) {
+            if (newStr[0].equals(Info.name())) {
                 commandFound = true;
                 if (newStr.length >= 2) {
                     in.create(newStr[1]);
