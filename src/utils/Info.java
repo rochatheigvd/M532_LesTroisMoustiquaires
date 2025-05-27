@@ -2,7 +2,6 @@ package utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import gameClasses.Command;
 import gameClasses.Item;
 import gameClasses.Location;
@@ -12,6 +11,29 @@ import gameClasses.items.Letter;
 public class Info extends Command {
     int count;
     static String name = "bernardo";
+
+    private void dance() {
+        System.out.println("Au revoir hahaha");
+        try {
+            Thread.sleep(2 * 1000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+        System.exit(0);
+    }
+
+    private void pause() {
+        System.out.println("Ton superpouvoir est de faire une pause de 10mn. (600 secondes)");
+        for (int i = 0; i < 600; i++) {
+            System.out.println((i + 1) + "s");
+            try {
+                Thread.sleep(1 * 999);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.println("FIN DE LA PAUSE !!!");
+    }
 
     private void finishGame() {
         Location[][] worldMap = getGame().getWorldMap().getWorldMap();
@@ -54,29 +76,6 @@ public class Info extends Command {
                 break;
             }
         }
-    }
-
-    private void dance() {
-        System.out.println("Au revoir hahaha");
-        try {
-            Thread.sleep(2 * 1000);
-        } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
-        }
-        System.exit(0);
-    }
-
-    private void pause() {
-        System.out.println("Ton superpouvoir est de faire une pause de 10mn. (600 secondes)");
-        for (int i = 0; i < 600; i++) {
-            System.out.println((i + 1) + "s");
-            try {
-                Thread.sleep(1 * 999);
-            } catch (InterruptedException ie) {
-                Thread.currentThread().interrupt();
-            }
-        }
-        System.out.println("FIN DE LA PAUSE !!!");
     }
 
     public Info() {
