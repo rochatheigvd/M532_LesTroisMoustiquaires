@@ -75,14 +75,14 @@ public class Info extends Command {
                 command.execute(null);
                 break;
             }
-            
+
         }
         System.out.println("Voici ton nouvel inventaire:");
         for (Command command : commandsList) {
             if (command.getVerb().toLowerCase().equals("inventory")) {
                 command.execute(null);
                 break;
-            } 
+            }
         }
     }
 
@@ -97,7 +97,7 @@ public class Info extends Command {
 
     private void escargot() {
         Letter lettre = new Letter("Bernardo_Letter", "Une lettre de Bernardo l'escargot",
-                "Merci de m'avoir aidé à sortir de ma coquille et être devenu une limace. J'espère qu'on se revéra. Bernardo");
+                "Merci de m'avoir aidé à sortir de ma coquille et être devenu une limace. J'espère qu'on se reverra. Bernardo");
         System.out.println("You win : Bernardo_Letter");
         Command.getGame().getPlayer().getInventory().addItem(lettre);
     }
