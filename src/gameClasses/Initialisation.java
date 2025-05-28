@@ -1,6 +1,7 @@
 package gameClasses;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import gameClasses.items.Key;
 import main.Game;
@@ -14,7 +15,7 @@ public class Initialisation {
     private Inventory inventory;
     private CommandRegistry commandRegistry;
     private Map<String, Location> locations = new HashMap<>();
-    private Map<String, Command> commands = new java.util.LinkedHashMap<>();
+    private Map<String, Command> commands = new LinkedHashMap<>();
     private Map<String, Key> keys = new HashMap<>();
     private Map<String, Puzzle> puzzles = new HashMap<>();
     private Map<String, Letter> letters = new HashMap<>();
