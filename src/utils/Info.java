@@ -75,6 +75,14 @@ public class Info extends Command {
                 command.execute(null);
                 break;
             }
+            
+        }
+        System.out.println("Voici ton nouvel inventaire:");
+        for (Command command : commandsList) {
+            if (command.getVerb().toLowerCase().equals("inventory")) {
+                command.execute(null);
+                break;
+            } 
         }
     }
 
@@ -130,31 +138,31 @@ public class Info extends Command {
                             break;
                     }
                 } else {
-                    System.out.println("Il n'y a pas d'argument dans ta command, tu as presque tué Bernardo");
+                    System.out.println("Il n'y a pas d'argument dans ta commande, tu as presque tué Bernardo");
                 }
             } else if (count == 3) {
                 System.out.println("Tu as écrasé bernardo, il est mort.");
             } else {
-                System.out.println("Bernardo est mort depuis longtemps... tu l'avais écrasé...");
+                System.out.println("Bernardo est mort. Tu l'avais écrasé, tu te souviens ?");
             }
 
         } else {
             System.out.println("Bonjour, je suis Bernardo l'escargot.");
             int secondsToSleep = 1;
             try {
-                Thread.sleep(secondsToSleep * 500);
+                Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
             System.out.println("Je peux enfin sortir de ma coquille...");
             try {
-                Thread.sleep(secondsToSleep * 500);
+                Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
             System.out.println("Merci de m'avoir trouvé! ;)");
             try {
-                Thread.sleep(secondsToSleep * 500);
+                Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
