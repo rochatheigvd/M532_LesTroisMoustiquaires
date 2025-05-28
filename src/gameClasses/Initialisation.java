@@ -80,7 +80,7 @@ public class Initialisation {
         letters.put("Letter_3", new gameClasses.items.Letter(
             "cryptic_letter",
             "A cryptic message",
-            "What fruit is red and often found in kitchens? Solve this in front of the crackling fireplace."
+            "It is a source of life, but it can kill, it has no lungs, but it needs air, whats is it? Solve this in front of the crackling fireplace."
         ));
 
         //hint1 for puzzle_final
