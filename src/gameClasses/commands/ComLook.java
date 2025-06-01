@@ -15,12 +15,20 @@ public class ComLook extends Command {
 
     private void displayLook(Location location) {
         System.out.println(location.getName() + " description: " + location.getDescr());
-        System.out.print("You see " + (location.getItemList().size() + location.getPuzzleList().size()) + " item");
-        if (location.getItemList().size() >= 1) {
-            System.out.println("s:");
-        } else {
-            System.out.println(":");
+        System.out.print("You see " + location.getItemList().size() + " item");
+        if (location.getItemList().size() > 1) {
+            System.out.print("s");
+        } else if (location.getItemList().size() == 1){
+            System.out.print("");
         }
+
+        System.out.print(" and " + location.getPuzzleList().size() + " puzzle");
+        if (location.getPuzzleList().size() > 1) {
+                System.out.print("s");
+        } else if (location.getPuzzleList().size() == 1){
+                System.out.print("");
+        }
+        System.out.println(".");
         int i;
         for (i = 0; i < location.getItemList().size(); i++) {
             System.out.print("  - " +
