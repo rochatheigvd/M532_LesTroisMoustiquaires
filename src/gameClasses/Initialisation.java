@@ -141,10 +141,15 @@ public class Initialisation {
         locations.put("Toilet", new Location("Toilet", "A small, clean bathroom with tiled walls, a simple sink, and a faint scent of lavender soap.", true));
         locations.put("Hall Left", new Location("Hall Left", "A narrow hallway with creaky floorboards and faded wallpaper, leading to other parts of the house.", false));
         locations.put("Hall Right", new Location("Hall Right", "A bright corridor with several doors and a window at the end, letting in the afternoon light.", false));
+        locations.put("Garden", new Location("Garden", "CECI EST UN JARDIN", true));
+        locations.put("Barnyard", new Location("Barnyard", "CECI EST UN LA BASSE-COUR", true));
+        locations.put("Garden Shed", new Location("Garden Shed", "CABANE DE JARDIN", true));
+        locations.put("Room", new Location("Room", "LA CHAMBRE", false));
+        locations.put("Bathroom", new Location("Bathroom", "SALLE DE BAIN", true));
     }
 
     private void createWorldMap() {
-        worldMap = new WorldMap(3, 3);
+        worldMap = new WorldMap(4, 4);
     }
 
     private void createInventory() {
@@ -219,6 +224,11 @@ public class Initialisation {
         worldMap.setWorldMap(locations.get("Toilet"),         new int[] { 0, 2 });
         worldMap.setWorldMap(locations.get("Hall Left"),      new int[] { 1, 2 });
         worldMap.setWorldMap(locations.get("Hall Right"),     new int[] { 2, 2 });
+        worldMap.setWorldMap(locations.get("Room"), new int[] {0,1});
+        worldMap.setWorldMap(locations.get("Bathroom"), new int[] {0,3});
+        worldMap.setWorldMap(locations.get("Barnyard"), new int[] {2,3});
+        worldMap.setWorldMap(locations.get("Garden"), new int[] {3,2});
+        worldMap.setWorldMap(locations.get("Garden Shed"), new int[] {3,3});
     }
 
     private void linkWorldMap() {
