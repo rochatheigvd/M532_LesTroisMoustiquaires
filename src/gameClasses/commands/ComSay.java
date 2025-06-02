@@ -23,11 +23,12 @@ public class ComSay extends Command {
                             Item item = items.get(i);
                             getGame().getPlayer().getInventory().addItem(item);
                             if (i == items.size() - 1) {
-                                System.out.println(item.getName() + ".");
+                                System.out.print(item.getName() + ".");
                             } else {
                                 System.out.print(item.getName() + ", ");
                             }
                         }
+                        System.out.println(" Available in your inventory.");
                     } else {
                         System.out.println("The puzzle gave you nothing.");
                     }
