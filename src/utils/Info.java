@@ -13,7 +13,7 @@ public class Info extends Command {
     static String name = "bernardo";
 
     private void dance() {
-        System.out.println("Au revoir hahaha");
+        System.out.println("Good bye, hahaha");
         try {
             Thread.sleep(2 * 1000);
         } catch (InterruptedException ie) {
@@ -23,7 +23,7 @@ public class Info extends Command {
     }
 
     private void pause() {
-        System.out.println("Ton superpouvoir est de faire une pause de 10mn. (600 secondes)");
+        System.out.println("Your superpower is to do a break of 10 minutes.");
         for (int i = 0; i < 600; i++) {
             System.out.println((i + 1) + "s");
             try {
@@ -32,7 +32,7 @@ public class Info extends Command {
                 Thread.currentThread().interrupt();
             }
         }
-        System.out.println("FIN DE LA PAUSE !!!");
+        System.out.println("END OF THE BREAK !!!");
     }
 
     private void finishGame() {
@@ -67,8 +67,8 @@ public class Info extends Command {
                 }
             }
         }
-        System.out.println("Toutes les locations ont été ouvertes par Bernardo et il t'a donné tous les items.");
-        System.out.println("Voici la nouvelle carte:");
+        System.out.println("All locations have been open by Bernardo and he gave you all items.");
+        System.out.println("Here is the new map:");
         ArrayList<Command> commandsList = getGame().getCommandRegistry().getCommandRegistry();
         for (Command command : commandsList) {
             if (command.getVerb().toLowerCase().equals("map")) {
@@ -77,7 +77,7 @@ public class Info extends Command {
             }
 
         }
-        System.out.println("Voici ton nouvel inventaire:");
+        System.out.println("Here is your new inventory:");
         for (Command command : commandsList) {
             if (command.getVerb().toLowerCase().equals("inventory")) {
                 command.execute(null);
@@ -96,16 +96,16 @@ public class Info extends Command {
     }
 
     private void escargot() {
-        Letter lettre = new Letter("Bernardo_Letter", "Une lettre de Bernardo l'escargot",
-                "Merci de m'avoir aidé à sortir de ma coquille et être devenu une limace. J'espère qu'on se reverra. Bernardo");
+        Letter lettre = new Letter("Bernardo_Letter", "A lettre from Bernardo l'escargot",
+                "Thank you for helping me come out of my shell and become a slug. I hope to see you again. Bernardo");
         System.out.println("You win : Bernardo_Letter");
         Command.getGame().getPlayer().getInventory().addItem(lettre);
     }
 
     private void afficherCommands() {
-        System.out.println("break : te donne un superpouvoir");
-        System.out.println("l'escargot : tu gagnes un nouvel item dans l'inventaire.");
-        System.out.println("???? : øƒ∂∆µ≤≥÷åß∫œ∑´®†¥¨ˆπ“‘«»¬…æ╬▒░▓█■▀▄ (NE PAS UTILISER)");
+        System.out.println("break : give you a superpower");
+        System.out.println("l'escargot : you win a new item in your inventory");
+        System.out.println("???? : øƒ∂∆µ≤≥÷åß∫œ∑´®†¥¨ˆπ“‘«»¬…æ╬▒░▓█■▀▄ (DO NOT USE)");
     }
 
     public static String name() {
@@ -134,39 +134,39 @@ public class Info extends Command {
                             break;
                         default:
                             System.out.println(
-                                    "HAHAHAHAHAHAHAH! TROP NUL, TU PENSAIS VRAIMENT QUE J'ACCEPTERAIS DES ARGUMENTS RANDOMS ??? xD");
+                                    "HAHAHAHAHAHAHAH! TOO BAD, DID YOU REALLY THINK I WOULD ACCEPT RANDOMS ARGUMENTS ??? xD");
                             break;
                     }
                 } else {
-                    System.out.println("Il n'y a pas d'argument dans ta commande, tu as presque tué Bernardo");
+                    System.out.println("There's no argument in your order, you've almost killed Bernardo.");
                 }
             } else if (count == 3) {
-                System.out.println("Tu as écrasé bernardo, il est mort.");
+                System.out.println("You ran over Bernardo and he died.");
             } else {
-                System.out.println("Bernardo est mort. Tu l'avais écrasé, tu te souviens ?");
+                System.out.println("Bernardo's dead. You ran him over, remember?");
             }
 
         } else {
-            System.out.println("Bonjour, je suis Bernardo l'escargot.");
+            System.out.println("Hello, I'm Bernardo l'escargot.");
             int secondsToSleep = 1;
             try {
                 Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
-            System.out.println("Je peux enfin sortir de ma coquille...");
+            System.out.println("I can finally come out of my shell...");
             try {
                 Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
-            System.out.println("Merci de m'avoir trouvé! ;)");
+            System.out.println("Thank you for finding me! ;)");
             try {
                 Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
-            System.out.println("Comment puis-je vous aidez ?");
+            System.out.println("How can I help you?");
         }
         this.count = count + 1;
     }

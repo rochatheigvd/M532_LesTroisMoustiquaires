@@ -1,5 +1,7 @@
 package gameClasses.commands;
 
+import java.util.List;
+
 import gameClasses.Command;
 import gameClasses.Item;
 import gameClasses.items.*;
@@ -18,7 +20,10 @@ public class ComUse extends Command {
                     Key key = (Key) item;
                     if (getPlayerLocation().equals(getGame().getWorldMap().getLocation(key.getPositionUsable()))) {
                         displayUse(key);
-                        getGame().getWorldMap().getLocation(key.getPositionUnlockable()).unlockLocation();
+                        List<int[]> positionsUnlockable = key.getPositionUnlockable();
+                        for (int[] positions : positionsUnlockable) {
+                            getGame().getWorldMap().getLocation(positions).unlockLocation();
+                        }
                         getGame().getPlayer().getInventory().removeItem(item);
                     } else {
                         System.out.println("You are not in the right location.");
@@ -35,8 +40,16 @@ public class ComUse extends Command {
     }
 
     private void displayUse(Key key) {
-        System.out.println("You used " + key.getName() + ", it opens "
-                + getGame().getWorldMap().getLocation(key.getPositionUnlockable()).getName() + ".");
+        System.out.print("You used " + key.getName() + ", it opens ");
+        List<int[]> positionsUnlockable = key.getPositionUnlockable();
+        for (int i = 0; i < positionsUnlockable.size(); i++) {
+            int[] is = positionsUnlockable.get(i);
+            System.out.print(getGame().getWorldMap().getLocation(is).getName());
+            if (i != (positionsUnlockable.size()-1)) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println(".");
     }
 
     private Item itemFinder(String argument) {

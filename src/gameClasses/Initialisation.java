@@ -44,24 +44,29 @@ public class Initialisation {
             "Kitchen_Key",
             "A shiny brass key labeled 'Kitchen'.",
             "This key unlocks the kitchen door.",
-            new int[] { 0, 0 },
+            //new int[] { 0, 0 }
             new int[] { 1, 0 }));
+            keys.get("Kitchen_Key").addPositionUnlockable(new int[]{0,0});
+            
 
         // Key for Storage Closet (locked)
         keys.put("Storage_Closet_Key", new gameClasses.items.Key(
             "Storage_Closet_Key",
             "A small, rusty key with a tag that reads 'Storage Closet'.",
             "This key unlocks the storage closet.",
-            new int[] { 2, 1 },
+            //new int[] { 2, 1 },
             new int[] { 1, 1 }));
+            keys.get("Storage_Closet_Key").addPositionUnlockable(new int[]{2,1});
+
 
         // Key for Toilet (locked)
         keys.put("Toilet_Key", new gameClasses.items.Key(
             "Toilet_Key",
             "A simple silver key with a blue ribbon.",
             "This key unlocks the bathroom.",
-            new int[] { 0, 2 },
+            //new int[] { 0, 2 },
             new int[] { 1, 2 }));
+            keys.get("Toilet_Key").addPositionUnlockable(new int[]{0,2});
 
         //Letter for Hall Left
         letters.put("Letter_1", new gameClasses.items.Letter(
