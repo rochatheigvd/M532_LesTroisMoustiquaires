@@ -68,6 +68,16 @@ public class Initialisation {
             new int[] { 1, 2 }));
             keys.get("Toilet_Key").addPositionUnlockable(new int[]{0,2});
 
+        // Key for Outdoor (5)
+        keys.put("Outdoor_Key", new Key(
+            "Outdoor_Key",
+            "An aluminium toothed key ",
+            "This key opens the outside parts of the property",
+            new int[] {2,2}));
+            keys.get("Outoor_Key").addPositionUnlockable(new int[] {3,2});
+            keys.get("Outoor_Key").addPositionUnlockable(new int[] {2,3});
+
+        
         //Letter for Hall Left
         letters.put("Letter_1", new gameClasses.items.Letter(
             "old_letter",
@@ -88,6 +98,12 @@ public class Initialisation {
             "A cryptic message",
             "It is a source of life, but it can kill, it has no lungs, but it needs air, whats is it? Solve this in front of the crackling fireplace."
         ));
+
+        //Letter for storage closet (5)
+        letters.put("Letter_5", new Letter(
+            "printed_paper",
+            "A printed paper letter",
+            "I am present in your everyday life, you can count on me but only when I am plugged in, what am I? Give the answer to a shelf containing old boxes, and forgotten tools."));
 
         //hint1 for puzzle_final
         letters.put("hint_1", new gameClasses.items.Letter(
@@ -112,20 +128,25 @@ public class Initialisation {
     }
 
     private void createPuzzles() {
-        // Hall Right Puzzle gives Storage Closet Key
+        // Hall Right Puzzle gives Storage Closet Key (1)
         puzzles.put("Puzzle_1", new Puzzle(
             "broom",
             "It's written carved into the wood of one of the doors: \"Answer here and you will be given a reward.\""));
 
-        // Dining Room puzzle gives Toilet Key
+        // Dining Room puzzle gives Toilet Key (2)
         puzzles.put("Puzzle_2", new Puzzle(
             "water",
             "There's a weird jug on the wooden table. It is written under it: \"I'm listening to your answer.\""));
 
-        // Living Room puzzle gives Kitchen Key
+        // Living Room puzzle gives Kitchen Key (3)
         puzzles.put("Puzzle_3", new Puzzle(
             "fire",
             "It is written in the dust on the crackling fireplace: \"Say the answer distincly here.\""));
+
+        // Storage Closet gives Outdoor Key (5)
+        puzzles.put("Puzzle_5", new Puzzle(
+            "computer", 
+            "It is written on a shelf: \"Tell me something specific.\""));
 
         // Final puzzle
         puzzles.put("Puzzle_Final", new Puzzle(
@@ -197,6 +218,7 @@ public class Initialisation {
         locations.get("Storage Closet").addItemToList(letters.get("Letter_2"));
         locations.get("Toilet").addItemToList(letters.get("Letter_3"));
         locations.get("Kitchen").addItemToList(letters.get("hint_3"));
+        locations.get("Room").addItemToList(letters.get("Letter_5")); // (5)
     }
 
     private void linkItemsToRewards() {
@@ -205,6 +227,7 @@ public class Initialisation {
         puzzles.get("Puzzle_2").addItemToRewards(letters.get("hint_1"));
         puzzles.get("Puzzle_3").addItemToRewards(keys.get("Kitchen_Key"));
         puzzles.get("Puzzle_3").addItemToRewards(letters.get("hint_2"));
+        puzzles.get("Puzzle_5").addItemToRewards(keys.get("Outdoor_Key")); //(5)
     }
 
     private void linkPuzzles() {
@@ -212,6 +235,7 @@ public class Initialisation {
         locations.get("Dining Room").addPuzzleToList(puzzles.get("Puzzle_2"));
         locations.get("Living Room").addPuzzleToList(puzzles.get("Puzzle_3"));
         locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
+        locations.get("Storage Closet").addPuzzleToList(puzzles.get("Puzzle_5")); // (5)
         game.setFinalPuzzle(puzzles.get("Puzzle_Final"));
     }
 
@@ -224,11 +248,11 @@ public class Initialisation {
         worldMap.setWorldMap(locations.get("Toilet"),         new int[] { 0, 2 });
         worldMap.setWorldMap(locations.get("Hall Left"),      new int[] { 1, 2 });
         worldMap.setWorldMap(locations.get("Hall Right"),     new int[] { 2, 2 });
-        worldMap.setWorldMap(locations.get("Room"), new int[] {0,1});
-        worldMap.setWorldMap(locations.get("Bathroom"), new int[] {0,3});
-        worldMap.setWorldMap(locations.get("Barnyard"), new int[] {2,3});
-        worldMap.setWorldMap(locations.get("Garden"), new int[] {3,2});
-        worldMap.setWorldMap(locations.get("Garden Shed"), new int[] {3,3});
+        worldMap.setWorldMap(locations.get("Room"),           new int[] { 0, 1 });
+        worldMap.setWorldMap(locations.get("Bathroom"),       new int[] { 0, 3 });
+        worldMap.setWorldMap(locations.get("Barnyard"),       new int[] { 2, 3 });
+        worldMap.setWorldMap(locations.get("Garden"),         new int[] { 3, 2 });
+        worldMap.setWorldMap(locations.get("Garden Shed"),    new int[] { 3, 3 });
     }
 
     private void linkWorldMap() {
