@@ -3,6 +3,8 @@ package gameClasses;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import gameClasses.items.Crystal;
 import gameClasses.items.Key;
 import main.Game;
 import gameClasses.items.Letter;
@@ -66,7 +68,7 @@ public class Initialisation {
             "This key unlocks the bathroom.",
             //new int[] { 0, 2 },
             new int[] { 1, 2 }));
-            keys.get("Toilet_Key").addPositionUnlockable(new int[]{0,2});
+        keys.get("Toilet_Key").addPositionUnlockable(new int[]{0,2});
 
         // Key for Outdoor (5)
         keys.put("Outdoor_Key", new Key(
@@ -74,8 +76,8 @@ public class Initialisation {
             "An aluminium toothed key ",
             "This key opens the outside parts of the property",
             new int[] {2,2}));
-            keys.get("Outoor_Key").addPositionUnlockable(new int[] {3,2});
-            keys.get("Outoor_Key").addPositionUnlockable(new int[] {2,3});
+        keys.get("Outdoor_Key").addPositionUnlockable(new int[] {3,2});
+        keys.get("Outdoor_Key").addPositionUnlockable(new int[] {2,3});
 
         
         //Letter for Hall Left
@@ -100,7 +102,7 @@ public class Initialisation {
         ));
 
         //Letter for storage closet (5)
-        letters.put("Letter_5", new Letter(
+        letters.put("Letter_5", new gameClasses.items.Letter(
             "printed_paper",
             "A printed paper letter",
             "I am present in your everyday life, you can count on me but only when I am plugged in, what am I? Give the answer to a shelf containing old boxes, and forgotten tools."));
@@ -161,6 +163,7 @@ public class Initialisation {
         locations.put("Storage Closet", new Location("Storage Closet", "A cramped storage closet cluttered with cleaning supplies, old boxes, and forgotten tools.", true));
         locations.put("Toilet", new Location("Toilet", "A small, clean bathroom with tiled walls, a simple sink, and a faint scent of lavender soap.", true));
         locations.put("Hall Left", new Location("Hall Left", "A narrow hallway with creaky floorboards and faded wallpaper, leading to other parts of the house.", false));
+        locations.get("Hall Left").setVisited();
         locations.put("Hall Right", new Location("Hall Right", "A bright corridor with several doors and a window at the end, letting in the afternoon light.", false));
         locations.put("Garden", new Location("Garden", "CECI EST UN JARDIN", true));
         locations.put("Barnyard", new Location("Barnyard", "CECI EST UN LA BASSE-COUR", true));
@@ -219,6 +222,7 @@ public class Initialisation {
         locations.get("Toilet").addItemToList(letters.get("Letter_3"));
         locations.get("Kitchen").addItemToList(letters.get("hint_3"));
         locations.get("Room").addItemToList(letters.get("Letter_5")); // (5)
+        locations.get("Hall Left").addItemToList(new Crystal("crystal", "A very shiny crystal on the floor", "A crystal to teleport you to a visited location"));
     }
 
     private void linkItemsToRewards() {

@@ -37,7 +37,7 @@ public class ComLook extends Command {
                 System.out.print("  - " +
                         location.getItemList().get(i).getName() + ": " + location.getItemList().get(i).getLookDescr());
                 if (i < location.getItemList().size() - 1) {
-                    System.out.print(", ");
+                    System.out.println();
                 } else {
                     System.out.println(".");
                 }

@@ -15,6 +15,7 @@ public class ComMove extends Command {
                 if (verifNextLocationExists(nextPos)) {
                     getGame().getPlayer().setPlayerPosition(nextPos);
                     displayMove(argument, nextPos);
+                    getPlayerLocation().setVisited();
                 } else {
                     System.out.println(", you can't go there.");
                 }

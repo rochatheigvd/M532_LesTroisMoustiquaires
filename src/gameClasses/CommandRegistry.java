@@ -2,6 +2,7 @@ package gameClasses;
 
 import utils.Info;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CommandRegistry {
     private ArrayList<Command> commandList;
@@ -33,7 +34,9 @@ public class CommandRegistry {
             if (command.getVerb().equals(newStr[0])) {
                 commandFound = true;
                 if (newStr.length >= 2) {
-                    command.execute(newStr[1]);
+                    String args;
+                    args = String.join(" ", Arrays.copyOfRange(newStr, 1, newStr.length));
+                    command.execute(args);
                 } else {
                     command.execute(null);
                 }
