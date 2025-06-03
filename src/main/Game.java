@@ -32,6 +32,7 @@ public class Game {
 
         while (running) {
             System.out.print("> ");
+            
             String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) {
