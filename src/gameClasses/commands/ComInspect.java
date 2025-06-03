@@ -29,13 +29,13 @@ public class ComInspect extends Command {
                 System.out.println("Which item do you want to inspect?");
                 int input = -1;
 
-                java.util.Scanner scanner2 = new java.util.Scanner(System.in);
+                java.util.Scanner scanner = new java.util.Scanner(System.in);
                 do {
-                    while (!scanner2.hasNextInt()) {
+                    while (!scanner.hasNextInt()) {
                         System.out.print("Ce n'est pas un entier. Réessayez : ");
-                        scanner2.next();
+                        scanner.next();
                     }
-                    input = scanner2.nextInt();
+                    input = scanner.nextInt();
                     if (input < 1 || input > i.size()) {
                         if (i.size() > 1) {
                             System.out.println("The number must be between " + 1 + " and " + i.size() + ".");
