@@ -18,14 +18,14 @@ public void execute(String argument) {
                 Item selectedItem = getGame().getPlayer().getInventory().getItemList().get(index - 1);
                 displayItem(selectedItem);
             } else {
-                System.out.println("Numéro d'item invalide.");
+                System.out.println("Invalid item number.");
             }
         } catch (NumberFormatException e) {
             Item i = getGame().getPlayer().getInventory().getItem(argument);
             if (i != null) {
                 displayItem(i);
             } else {
-                System.out.println("Cet item n'existe pas dans votre inventaire.");
+                System.out.println("This item does not exist in your inventory.");
             }
         }
     } else {
