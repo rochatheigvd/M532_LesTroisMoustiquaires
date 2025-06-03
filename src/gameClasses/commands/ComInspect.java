@@ -32,7 +32,7 @@ public class ComInspect extends Command {
                 java.util.Scanner scanner = new java.util.Scanner(System.in);
                 do {
                     while (!scanner.hasNextInt()) {
-                        System.out.print("Ce n'est pas un entier. Réessayez : ");
+                        System.out.println("This is not an integer, try again. ");
                         scanner.next();
                     }
                     input = scanner.nextInt();
