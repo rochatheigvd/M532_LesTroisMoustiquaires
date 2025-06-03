@@ -219,8 +219,8 @@ public class Initialisation {
     private void linkItemsToLocations() {
         locations.get("Hall Left").addItemToList(letters.get("Letter_1"));
         locations.get("Storage Closet").addItemToList(letters.get("Letter_2"));
-        locations.get("Toilet").addItemToList(letters.get("Letter_3"));
-        locations.get("Kitchen").addItemToList(letters.get("hint_3"));
+        locations.get("Garden").addItemToList(letters.get("Letter_3"));
+        locations.get("Kitchen").addItemToList(letters.get("hint_2"));
         locations.get("Room").addItemToList(letters.get("Letter_5")); // (5)
         locations.get("Hall Left").addItemToList(new Crystal("crystal", "A very shiny crystal on the floor", "A crystal to teleport you to a visited location"));
     }
@@ -230,14 +230,13 @@ public class Initialisation {
         puzzles.get("Puzzle_2").addItemToRewards(keys.get("Toilet_Key"));
         puzzles.get("Puzzle_2").addItemToRewards(letters.get("hint_1"));
         puzzles.get("Puzzle_3").addItemToRewards(keys.get("Kitchen_Key"));
-        puzzles.get("Puzzle_3").addItemToRewards(letters.get("hint_2"));
         puzzles.get("Puzzle_5").addItemToRewards(keys.get("Outdoor_Key")); //(5)
     }
 
     private void linkPuzzles() {
         locations.get("Hall Right").addPuzzleToList(puzzles.get("Puzzle_1"));
         locations.get("Dining Room").addPuzzleToList(puzzles.get("Puzzle_2"));
-        locations.get("Living Room").addPuzzleToList(puzzles.get("Puzzle_3"));
+        locations.get("Bathroom").addPuzzleToList(puzzles.get("Puzzle_3"));
         locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
         locations.get("Storage Closet").addPuzzleToList(puzzles.get("Puzzle_5")); // (5)
         game.setFinalPuzzle(puzzles.get("Puzzle_Final"));

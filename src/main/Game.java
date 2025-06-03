@@ -39,13 +39,29 @@ public class Game {
                 running = false;
                 System.out.println("Goodbye!");
             } else if (!input.isEmpty()) {
-                if (commandRegistry != null) {
-                    commandRegistry.userInput(input);
+                String[] parts = input.split("\\s+", 2);
+                String command = parts[0];
+                String argument = (parts.length > 1) ? parts[1] : null;
+
+                if (command.equalsIgnoreCase("inspect")) {
+                    if (argument == null) {
+                        commandRegistry.userInput("inspect");
+                        System.out.print("Sélectionnez le numéro de l'item à inspecter : ");
+                        String saisie = scanner.nextLine().trim();
+                        commandRegistry.userInput("inspect " + saisie);
+
+                    } else {
+                        commandRegistry.userInput("inspect " + argument);
+                    }
+
                 } else {
-                    System.out.println("Command system not initialized.");
+                    if (commandRegistry != null) {
+                        commandRegistry.userInput(input);
+                    } else {
+                        System.out.println("Command system not initialized.");
+                    }
                 }
             }
-
             if (finalPuzzle != null && isFinalPuzzleSolved(finalPuzzle)) {
                 System.out.println("Congratulations! You have escaped the house!");
                 running = false;
@@ -86,6 +102,6 @@ public class Game {
     }
 
     public void setFinalPuzzle(Puzzle puzzle) {
-    this.finalPuzzle = puzzle;
-}
+        this.finalPuzzle = puzzle;
+    }
 }
