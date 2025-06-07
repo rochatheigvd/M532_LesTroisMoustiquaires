@@ -3,7 +3,6 @@ package gameClasses;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import gameClasses.items.Crystal;
 import gameClasses.items.Key;
 import main.Game;
@@ -40,18 +39,8 @@ public class Initialisation {
         createGame();
     }
 
-    private void createItems() {
-        // Key for Kitchen (locked)
-        keys.put("Kitchen_Key", new gameClasses.items.Key(
-            "Kitchen_Key",
-            "A shiny brass key labeled 'Kitchen'.",
-            "This key unlocks the kitchen door.",
-            //new int[] { 0, 0 }
-            new int[] { 1, 0 }));
-            keys.get("Kitchen_Key").addPositionUnlockable(new int[]{0,0});
-            
-
-        // Key for Storage Closet (locked)
+    private void createItems() { 
+        // Key for Storage Closet (1)
         keys.put("Storage_Closet_Key", new gameClasses.items.Key(
             "Storage_Closet_Key",
             "A small, rusty key with a tag that reads 'Storage Closet'.",
@@ -61,14 +50,33 @@ public class Initialisation {
             keys.get("Storage_Closet_Key").addPositionUnlockable(new int[]{2,1});
 
 
-        // Key for Toilet (locked)
+        // Key for Toilet (2)
         keys.put("Toilet_Key", new gameClasses.items.Key(
             "Toilet_Key",
             "A simple silver key with a blue ribbon.",
-            "This key unlocks the bathroom.",
+            "This key unlocks the toilet and the bathroom.",
             //new int[] { 0, 2 },
             new int[] { 1, 2 }));
         keys.get("Toilet_Key").addPositionUnlockable(new int[]{0,2});
+        keys.get("Toilet_Key").addPositionUnlockable(new int[]{0,3});
+
+        // Key for Kitchen (3)
+        keys.put("Kitchen_Key", new gameClasses.items.Key(
+            "Kitchen_Key",
+            "A shiny brass key labeled 'Kitchen'.",
+            "This key unlocks the kitchen door.",
+            //new int[] { 0, 0 }
+            new int[] { 1, 0 }));
+        keys.get("Kitchen_Key").addPositionUnlockable(new int[]{0,0});
+
+        // Key for Garden Shed (4)
+        keys.put("Garden_Shed_Key", new gameClasses.items.Key(
+            "Garden_Shed_Key",
+            "A sturdy iron key labeled 'Garden Shed'.",
+            "This key unlocks the garden shed.",
+            //new int[] { 0, 2 },
+            new int[] { 2, 3 }));
+        keys.get("Toilet_Key").addPositionUnlockable(new int[]{3,3});
 
         // Key for Outdoor (5)
         keys.put("Outdoor_Key", new Key(
@@ -80,32 +88,39 @@ public class Initialisation {
         keys.get("Outdoor_Key").addPositionUnlockable(new int[] {2,3});
 
         
-        //Letter for Hall Left
+        //Letter for Hall Left (1)
         letters.put("Letter_1", new gameClasses.items.Letter(
             "old_letter",
             "A beautifully written old letter",
             "You will find a corridor with many doors, and a bright window at the end. There you will say the answer to my question. What object is used to clean the floor but never gets dirty?"
         ));
 
-        //Letter for Dining Room
+        //Letter for Storage Closet (2)
         letters.put("Letter_2", new gameClasses.items.Letter(
             "mysterious_note",
             "A mysterious note",
             "What flows but never runs out? Say the answer out loud where you usually eat."
         ));
 
-        //Letter for Living Room
+        //Letter for Garden (3)
         letters.put("Letter_3", new gameClasses.items.Letter(
             "cryptic_letter",
             "A cryptic message",
-            "It is a source of life, but it can kill, it has no lungs, but it needs air, whats is it? Solve this in front of the crackling fireplace."
+            "It is a source of life, but it can kill, it has no lungs, but it needs air, whats is it? Solve this in the bathroom."
         ));
 
-        //Letter for storage closet (5)
+        //Letter for Toilet (4)
+        letters.put("Letter_4", new gameClasses.items.Letter(
+            "enigmatic_note",
+            "An enigmatic note",
+            "I am essential for dreams, I come each night and leave each morning. Solve this riddle where the bed is made and dreams begin."
+        ));
+
+        //Letter for Bedroom (5)
         letters.put("Letter_5", new gameClasses.items.Letter(
             "printed_paper",
             "A printed paper letter",
-            "I am present in your everyday life, you can count on me but only when I am plugged in, what am I? Give the answer to a shelf containing old boxes, and forgotten tools."));
+            "I dig and move earth, but I am not alive. I have a handle and a blade, but I am not a knife. What am I? Say the answer where tools are stored."));
 
         //hint1 for puzzle_final
         letters.put("hint_1", new gameClasses.items.Letter(
@@ -145,9 +160,14 @@ public class Initialisation {
             "fire",
             "It is written in the dust on the crackling fireplace: \"Say the answer distincly here.\""));
 
+        // Bedroom puzzle gives Garden Shed Key (4)
+        puzzles.put("Puzzle_4", new Puzzle(
+            "sleep",
+            "A note is pinned to the pillow: \"Come here, have a rest.\""));
+
         // Storage Closet gives Outdoor Key (5)
         puzzles.put("Puzzle_5", new Puzzle(
-            "computer", 
+            "shovel", 
             "It is written on a shelf: \"Tell me something specific.\""));
 
         // Final puzzle
@@ -165,11 +185,11 @@ public class Initialisation {
         locations.put("Hall Left", new Location("Hall Left", "A narrow hallway with creaky floorboards and faded wallpaper, leading to other parts of the house.", false));
         locations.get("Hall Left").setVisited();
         locations.put("Hall Right", new Location("Hall Right", "A bright corridor with several doors and a window at the end, letting in the afternoon light.", false));
-        locations.put("Garden", new Location("Garden", "CECI EST UN JARDIN", true));
-        locations.put("Barnyard", new Location("Barnyard", "CECI EST UN LA BASSE-COUR", true));
-        locations.put("Garden Shed", new Location("Garden Shed", "CABANE DE JARDIN", true));
-        locations.put("Room", new Location("Room", "LA CHAMBRE", false));
-        locations.put("Bathroom", new Location("Bathroom", "SALLE DE BAIN", true));
+        locations.put("Garden", new Location("Garden", "A lush garden bursting with colorful flowers, buzzing bees, and the gentle sound of a fountain. Sunlight dances across the greenery, inviting you to explore.", true));
+        locations.put("Barnyard", new Location("Barnyard", "A lively barnyard filled with the sounds of clucking chickens and the scent of fresh hay. Wooden fences enclose the area, and sunlight glints off scattered tools and feeding troughs.", true));
+        locations.put("Garden Shed", new Location("Garden Shed", "A small, weathered shed filled with gardening tools, bags of soil, and the earthy scent of plants.", true));
+        locations.put("Bedroom", new Location("Bedroom", "A peaceful bedroom with a neatly made bed, soft pillows, and sunlight streaming through the curtains. The scent of fresh linen fills the air, and a sense of calm invites you to rest.", false));
+        locations.put("Bathroom", new Location("Bathroom", "A bright, spotless bathroom with gleaming white tiles, a large mirror above the sink, and the fresh scent of lavender soap in the air.", true));
     }
 
     private void createWorldMap() {
@@ -220,8 +240,12 @@ public class Initialisation {
         locations.get("Hall Left").addItemToList(letters.get("Letter_1"));
         locations.get("Storage Closet").addItemToList(letters.get("Letter_2"));
         locations.get("Garden").addItemToList(letters.get("Letter_3"));
+        locations.get("Toilet").addItemToList(letters.get("Letter_4"));
+        locations.get("Bedroom").addItemToList(letters.get("Letter_5")); // (5)
+
         locations.get("Kitchen").addItemToList(letters.get("hint_2"));
-        locations.get("Room").addItemToList(letters.get("Letter_5")); // (5)
+        locations.get("Garden Shed").addItemToList(letters.get("hint_3"));
+
         locations.get("Hall Left").addItemToList(new Crystal("crystal", "A very shiny crystal on the floor", "A crystal to teleport you to a visited location"));
     }
 
@@ -230,6 +254,7 @@ public class Initialisation {
         puzzles.get("Puzzle_2").addItemToRewards(keys.get("Toilet_Key"));
         puzzles.get("Puzzle_2").addItemToRewards(letters.get("hint_1"));
         puzzles.get("Puzzle_3").addItemToRewards(keys.get("Kitchen_Key"));
+        puzzles.get("Puzzle_4").addItemToRewards(keys.get("Garden_Shed_Key"));
         puzzles.get("Puzzle_5").addItemToRewards(keys.get("Outdoor_Key")); //(5)
     }
 
@@ -237,13 +262,13 @@ public class Initialisation {
         locations.get("Hall Right").addPuzzleToList(puzzles.get("Puzzle_1"));
         locations.get("Dining Room").addPuzzleToList(puzzles.get("Puzzle_2"));
         locations.get("Bathroom").addPuzzleToList(puzzles.get("Puzzle_3"));
-        locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
+        locations.get("Bedroom").addPuzzleToList(puzzles.get("Puzzle_4"));
         locations.get("Storage Closet").addPuzzleToList(puzzles.get("Puzzle_5")); // (5)
+        locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
         game.setFinalPuzzle(puzzles.get("Puzzle_Final"));
     }
 
     private void linkLocations() {
-        // Insert locations into the worldMap
         worldMap.setWorldMap(locations.get("Kitchen"),        new int[] { 0, 0 });
         worldMap.setWorldMap(locations.get("Dining Room"),    new int[] { 1, 0 });
         worldMap.setWorldMap(locations.get("Living Room"),    new int[] { 1, 1 });
@@ -251,7 +276,7 @@ public class Initialisation {
         worldMap.setWorldMap(locations.get("Toilet"),         new int[] { 0, 2 });
         worldMap.setWorldMap(locations.get("Hall Left"),      new int[] { 1, 2 });
         worldMap.setWorldMap(locations.get("Hall Right"),     new int[] { 2, 2 });
-        worldMap.setWorldMap(locations.get("Room"),           new int[] { 0, 1 });
+        worldMap.setWorldMap(locations.get("Bedroom"),        new int[] { 0, 1 });
         worldMap.setWorldMap(locations.get("Bathroom"),       new int[] { 0, 3 });
         worldMap.setWorldMap(locations.get("Barnyard"),       new int[] { 2, 3 });
         worldMap.setWorldMap(locations.get("Garden"),         new int[] { 3, 2 });
