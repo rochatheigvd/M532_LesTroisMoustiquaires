@@ -246,7 +246,7 @@ public class Initialisation {
         locations.get("Kitchen").addItemToList(letters.get("hint_2"));
         locations.get("Garden Shed").addItemToList(letters.get("hint_3"));
 
-        locations.get("Hall Left").addItemToList(new Crystal("crystal", "A very shiny crystal on the floor", "A crystal to teleport you to a visited location"));
+        locations.get("Garden").addItemToList(new Crystal("crystal", "A very shiny crystal on the floor", "A crystal to teleport you to a visited location"));
     }
 
     private void linkItemsToRewards() {
