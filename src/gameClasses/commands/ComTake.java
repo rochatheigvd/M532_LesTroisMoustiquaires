@@ -16,6 +16,11 @@ public class ComTake extends Command {
                 getGame().getPlayer().getInventory().addItem(item);
                 getPlayerLocation().dropItem(item);
                 System.out.println(item.getName() + " is in your inventory.");
+                if (item.getName().toLowerCase().equals("crystal")) {
+                    getGame().getCommandRegistry().addCommand(
+                            new ComTeleport("teleport", "Can teleport you to a visited location by using his name."));
+                    System.out.println("You unlock a new command. Type help to see more.");
+                }
             } else {
                 System.out.println("There is no object with this name here.");
             }

@@ -10,6 +10,7 @@ public class Location implements IPrintable { // Est-ce que on doit implémenter
     private boolean isLocked;
     private ArrayList<Puzzle> puzzleList;
     private ArrayList<Item> itemList;
+    private boolean visited;
 
     public Location(String name, String descr, boolean isLocked) {
         this.descr = descr;
@@ -17,10 +18,21 @@ public class Location implements IPrintable { // Est-ce que on doit implémenter
         this.name = name;
         this.puzzleList = new ArrayList<Puzzle>();
         this.itemList = new ArrayList<Item>();
+        this.visited = false;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public boolean getVisited() {
+        return this.visited;
+    }
+
+    public void setVisited() {
+        if (this.visited == false) {
+            this.visited = true;
+        }
     }
 
     public String getDescr() {

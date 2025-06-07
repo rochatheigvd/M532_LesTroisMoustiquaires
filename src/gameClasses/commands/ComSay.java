@@ -15,18 +15,20 @@ public class ComSay extends Command {
                 Puzzle p = verifSolution(argument);
                 if (p != null) {
                     List<Item> items = p.getRewards();
+                    getPlayerLocation().dropPuzzle(p);
                     if (!items.isEmpty()) {
+                        System.out.println("Congratulations! You solved the puzzle.");
                         System.out.print("You win : ");
                         for (int i = 0; i < items.size(); i++) {
                             Item item = items.get(i);
                             getGame().getPlayer().getInventory().addItem(item);
                             if (i == items.size() - 1) {
-                                System.out.println(item.getName() + ".");
+                                System.out.print(item.getName() + ".");
                             } else {
                                 System.out.print(item.getName() + ", ");
                             }
                         }
-                        getPlayerLocation().dropPuzzle(p);
+                        System.out.println(" Available in your inventory.");
                     } else {
                         System.out.println("The puzzle gave you nothing.");
                     }

@@ -5,7 +5,7 @@ package utils;
  */
 public class Array2Dprinter {
 
-    private static int SPACING = 1;
+    private static int SPACING = 0;
 
     private static Style highlightTextStyle = Style.BOLD;
     private static Color highlightTextColor = Color.WHITE;
