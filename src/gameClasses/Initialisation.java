@@ -76,13 +76,13 @@ public class Initialisation {
             "This key unlocks the garden shed.",
             //new int[] { 0, 2 },
             new int[] { 2, 3 }));
-        keys.get("Toilet_Key").addPositionUnlockable(new int[]{3,3});
+        keys.get("Garden_Shed_Key").addPositionUnlockable(new int[]{3,3});
 
         // Key for Outdoor (5)
         keys.put("Outdoor_Key", new Key(
             "Outdoor_Key",
             "An aluminium toothed key ",
-            "This key opens the outside parts of the property",
+            "This key opens the outside parts of the property.",
             new int[] {2,2}));
         keys.get("Outdoor_Key").addPositionUnlockable(new int[] {3,2});
         keys.get("Outdoor_Key").addPositionUnlockable(new int[] {2,3});
@@ -157,8 +157,8 @@ public class Initialisation {
 
         // Living Room puzzle gives Kitchen Key (3)
         puzzles.put("Puzzle_3", new Puzzle(
-            "fire",
-            "It is written in the dust on the crackling fireplace: \"Say the answer distincly here.\""));
+            "mirror",
+            "Written on the foggy glass: \"Say the answer distincly here.\""));
 
         // Bedroom puzzle gives Garden Shed Key (4)
         puzzles.put("Puzzle_4", new Puzzle(
