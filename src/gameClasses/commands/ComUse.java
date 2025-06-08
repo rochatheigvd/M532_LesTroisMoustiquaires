@@ -35,9 +35,7 @@ public class ComUse extends Command {
             }
 
             System.out.print("Select the number of the item to use: ");
-            java.util.Scanner scanner = new java.util.Scanner(System.in);
-            String saisie = scanner.nextLine().trim();
-            execute(saisie);
+            return;
 
         } else {
             try {

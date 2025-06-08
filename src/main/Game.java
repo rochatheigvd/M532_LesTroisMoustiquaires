@@ -43,10 +43,18 @@ public class Game {
                 String command = parts[0];
                 String argument = (parts.length > 1) ? parts[1] : null;
 
-                if (command.equalsIgnoreCase("inspect")) {
+                if (command.equalsIgnoreCase("use")) {
+                    if (argument == null) {
+                        commandRegistry.userInput("use");
+                        String saisie = scanner.nextLine().trim();
+                        commandRegistry.userInput("use " + saisie);
+                    } else {
+                        commandRegistry.userInput("use " + argument);
+                    }
+                } else if (command.equalsIgnoreCase("inspect")) {
                     if (argument == null) {
                         commandRegistry.userInput("inspect");
-                        System.out.print("Sélectionnez le numéro de l'item à inspecter : ");
+                        System.out.print("Select the number of the item to inspect: ");
                         String saisie = scanner.nextLine().trim();
                         commandRegistry.userInput("inspect " + saisie);
 
