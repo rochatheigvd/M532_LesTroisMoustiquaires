@@ -1,6 +1,7 @@
 package gameClasses.commands;
 
 import gameClasses.Command;
+import gameClasses.events.PlayerMovedEvent;
 
 public class ComMove extends Command {
     public ComMove(String verb, String description) {
@@ -16,6 +17,7 @@ public class ComMove extends Command {
                     getGame().getPlayer().setPlayerPosition(nextPos);
                     displayMove(argument, nextPos);
                     getPlayerLocation().setVisited();
+                    getGame().addEvent(new PlayerMovedEvent(nextPos));
                 } else {
                     System.out.println(", you can't go there.");
                 }

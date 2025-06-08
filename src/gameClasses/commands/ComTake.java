@@ -2,6 +2,7 @@ package gameClasses.commands;
 
 import java.util.List;
 import gameClasses.*;
+import gameClasses.events.ItemCollectedEvent;
 
 public class ComTake extends Command {
     public ComTake(String verb, String description) {
@@ -21,6 +22,7 @@ public class ComTake extends Command {
                             new ComTeleport("teleport", "Can teleport you to a visited location by using his name."));
                     System.out.println("You unlock a new command. Type help to see more.");
                 }
+                getGame().addEvent(new ItemCollectedEvent(item.getName()));
             } else {
                 System.out.println("There is no object with this name here.");
             }

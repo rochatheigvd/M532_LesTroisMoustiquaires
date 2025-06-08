@@ -1,8 +1,11 @@
 package gameClasses;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
+
 import gameClasses.items.Crystal;
 import gameClasses.items.Key;
 import main.Game;
@@ -23,8 +26,8 @@ public class Initialisation {
 
     public void initGame() {
         createInstances();
-        linkInstances();
         Command.setGame(game);
+        linkInstances();
     }
 
     private void createInstances() {
@@ -183,7 +186,6 @@ public class Initialisation {
         locations.put("Storage Closet", new Location("Storage Closet", "A cramped storage closet cluttered with cleaning supplies, old boxes, and forgotten tools.", true));
         locations.put("Toilet", new Location("Toilet", "A small, clean bathroom with tiled walls, a simple sink, and a faint scent of lavender soap.", true));
         locations.put("Hall Left", new Location("Hall Left", "A narrow hallway with creaky floorboards and faded wallpaper, leading to other parts of the house.", false));
-        locations.get("Hall Left").setVisited();
         locations.put("Hall Right", new Location("Hall Right", "A bright corridor with several doors and a window at the end, letting in the afternoon light.", false));
         locations.put("Garden", new Location("Garden", "A lush garden bursting with colorful flowers, buzzing bees, and the gentle sound of a fountain. Sunlight dances across the greenery, inviting you to explore.", true));
         locations.put("Barnyard", new Location("Barnyard", "A lively barnyard filled with the sounds of clucking chickens and the scent of fresh hay. Wooden fences enclose the area, and sunlight glints off scattered tools and feeding troughs.", true));
@@ -218,6 +220,7 @@ public class Initialisation {
         commands.put("take", new gameClasses.commands.ComTake("take", "Pick up an item from the current location"));
         commands.put("use", new gameClasses.commands.ComUse("use", "Use an item from your inventory"));
         commands.put("say", new gameClasses.commands.ComSay("say", "Say something to solve a puzzle"));
+        commands.put("save", new gameClasses.commands.ComSave("save", "Save the current status of the game"));
     }
 
     private void createGame() {
@@ -234,6 +237,7 @@ public class Initialisation {
         linkPlayer();
         linkCommandRegistry();
         linkCommands();
+        locations.get("Hall Left").setVisited();
     }
 
     private void linkItemsToLocations() {
@@ -313,5 +317,128 @@ public class Initialisation {
 
     public Game getGame() {
         return this.game;
+    }
+
+    public void loadSavedGame(Game gameToLoad) {
+        // 1. Créer les instances de base
+        createInstances();
+        
+        // 2. Lier le jeu et ses composants principaux
+        gameToLoad.setPlayer(this.player);
+        gameToLoad.setWorldMap(this.worldMap);
+        gameToLoad.setCommandRegistry(this.commandRegistry);
+        gameToLoad.setFinalPuzzle(this.puzzles.get("Puzzle_Final"));
+        Command.setGame(gameToLoad);
+
+        // 3. Établir les liens de base
+        linkInventory();
+        linkPlayer();
+        linkWorldMap();
+        linkCommandRegistry();
+        linkCommands();
+        
+        // 4. Récupérer l'état sauvegardé
+        GameState state = gameToLoad.getCurrentSave().recreateState();
+        Set<String> collectedItems = new HashSet<>(state.getInventory());
+        Set<String> solvedPuzzles = state.getSolvedPuzzles();
+        Set<String> unlockedLocations = state.getUnlockedLocations();
+
+        // 5. Établir les liens des locations
+        linkLocations();
+
+        // 6. Placer uniquement les items et puzzles en fonction de l'état sauvegardé
+        handleItemPlacement(collectedItems, solvedPuzzles);
+
+        // 7. Déverrouiller les locations qui doivent l'être
+        for (String locName : unlockedLocations) {
+            Location loc = findLocationByName(locName);
+            if (loc != null) {
+                loc.unlockLocation();
+            }
+        }
+
+        // 8. Restaurer la position du joueur
+        player.setPlayerPosition(state.getPlayerPosition());
+    }
+
+    // Méthode utilitaire pour trouver une location par son nom
+    private Location findLocationByName(String name) {
+        for (Location loc : locations.values()) {
+            if (loc.getName().equals(name)) {
+                return loc;
+            }
+        }
+        return null;
+    }
+
+    private void handleItemPlacement(Set<String> collectedItems, Set<String> solvedPuzzles) {
+        // Placer d'abord les items non collectés dans les locations
+        Map<String, Map.Entry<String, Letter>> itemMapping = new HashMap<>();
+        itemMapping.put("old_letter", Map.entry("Hall Left", letters.get("Letter_1")));
+        itemMapping.put("mysterious_note", Map.entry("Storage Closet", letters.get("Letter_2")));
+        itemMapping.put("cryptic_letter", Map.entry("Garden", letters.get("Letter_3")));
+        itemMapping.put("enigmatic_note", Map.entry("Toilet", letters.get("Letter_4")));
+        itemMapping.put("printed_paper", Map.entry("Bedroom", letters.get("Letter_5")));
+        
+        // Traiter chaque item
+        for (Map.Entry<String, Map.Entry<String, Letter>> entry : itemMapping.entrySet()) {
+            String itemId = entry.getKey();
+            String locationName = entry.getValue().getKey();
+            Letter letter = entry.getValue().getValue();
+            
+            if (collectedItems.contains(itemId)) {
+                inventory.addItem(letter);
+            } else if (!solvedPuzzles.contains("Puzzle_1") || !itemId.equals("old_letter")) {
+                // Ne pas placer l'item si le puzzle correspondant a été résolu
+                locations.get(locationName).addItemToList(letter);
+            }
+        }
+
+        // Gérer les hints trouvables et les récompenses des puzzles
+        if (solvedPuzzles.contains("Puzzle_2")) {
+            inventory.addItem(letters.get("hint_1"));
+        }
+        
+        // Gérer les clés obtenues des puzzles résolus mais non utilisées
+        if (solvedPuzzles.contains("Puzzle_1") && collectedItems.contains("Storage_Closet_Key")) {
+            inventory.addItem(keys.get("Storage_Closet_Key"));
+        }
+        if (solvedPuzzles.contains("Puzzle_2") && collectedItems.contains("Toilet_Key")) {
+            inventory.addItem(keys.get("Toilet_Key"));
+        }
+        if (solvedPuzzles.contains("Puzzle_3") && collectedItems.contains("Kitchen_Key")) {
+            inventory.addItem(keys.get("Kitchen_Key"));
+        }
+        if (solvedPuzzles.contains("Puzzle_4") && collectedItems.contains("Garden_Shed_Key")) {
+            inventory.addItem(keys.get("Garden_Shed_Key"));
+        }
+        if (solvedPuzzles.contains("Puzzle_5") && collectedItems.contains("Outdoor_Key")) {
+            inventory.addItem(keys.get("Outdoor_Key"));
+        }
+        
+        // Gérer le crystal
+        if (collectedItems.contains("crystal")) {
+            inventory.addItem(new Crystal("crystal", 
+                "A very shiny crystal on the floor", 
+                "A crystal to teleport you to a visited location"));
+        } else {
+            locations.get("Garden").addItemToList(new Crystal("crystal", 
+                "A very shiny crystal on the floor", 
+                "A crystal to teleport you to a visited location"));
+        }
+
+        // Placer uniquement les puzzles non résolus
+        if (!solvedPuzzles.contains("Puzzle_1"))
+            locations.get("Hall Right").addPuzzleToList(puzzles.get("Puzzle_1"));
+        if (!solvedPuzzles.contains("Puzzle_2"))
+            locations.get("Dining Room").addPuzzleToList(puzzles.get("Puzzle_2"));
+        if (!solvedPuzzles.contains("Puzzle_3"))
+            locations.get("Bathroom").addPuzzleToList(puzzles.get("Puzzle_3"));
+        if (!solvedPuzzles.contains("Puzzle_4"))
+            locations.get("Bedroom").addPuzzleToList(puzzles.get("Puzzle_4"));
+        if (!solvedPuzzles.contains("Puzzle_5"))
+            locations.get("Storage Closet").addPuzzleToList(puzzles.get("Puzzle_5")); // (5)
+        if (!solvedPuzzles.contains("Puzzle_Final"))
+            locations.get("Hall Left").addPuzzleToList(puzzles.get("Puzzle_Final"));
     }
 }

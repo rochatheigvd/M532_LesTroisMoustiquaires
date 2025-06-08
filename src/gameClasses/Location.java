@@ -2,9 +2,11 @@ package gameClasses;
 
 import java.util.ArrayList;
 
+import gameClasses.events.LocationUnlockedEvent;
+import gameClasses.events.LocationVisitedEvent;
 import utils.IPrintable;
 
-public class Location implements IPrintable { // Est-ce que on doit implémenter ça du coup ?
+public class Location implements IPrintable {
     private String name;
     private String descr;
     private boolean isLocked;
@@ -30,8 +32,9 @@ public class Location implements IPrintable { // Est-ce que on doit implémenter
     }
 
     public void setVisited() {
-        if (this.visited == false) {
+        if (!this.visited) {
             this.visited = true;
+            Command.getGame().addEvent(new LocationVisitedEvent(this.name));
         }
     }
 
@@ -70,13 +73,12 @@ public class Location implements IPrintable { // Est-ce que on doit implémenter
     }
 
     public boolean unlockLocation() {
-
-        if (this.isLocked == true) {
+        if (this.isLocked) {
             this.isLocked = false;
+            Command.getGame().addEvent(new LocationUnlockedEvent(this.name));
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean addItemToList(Item item) {
