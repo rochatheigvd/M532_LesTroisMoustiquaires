@@ -106,7 +106,7 @@ public class Initialisation {
         letters.put("Letter_3", new gameClasses.items.Letter(
             "cryptic_letter",
             "A cryptic message",
-            "It is a source of life, but it can kill, it has no lungs, but it needs air, whats is it? Solve this in the bathroom."
+            "I show you, but I am not you. What am I ? Solve this in the bathroom."
         ));
 
         //Letter for Toilet (4)
